@@ -38,7 +38,7 @@
 </style>
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/MyPage.jsp"%>
+	<%@ include file="/WEB-INF/views/myPage/MyPage.jsp"%>
 
 	<section class="container" style="max-width: 620px; float: left;">
 		<div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: 20px; width: 650px; ">

@@ -22,7 +22,7 @@ public class RestaurantController {
 		
 		
 		
-		return "RestaurantDetail";
+		return "RsDetail/RestaurantDetail";
 	}
 
 }

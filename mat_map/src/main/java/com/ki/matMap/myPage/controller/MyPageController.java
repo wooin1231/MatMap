@@ -22,7 +22,7 @@ public class MyPageController {
 		
 		
 		
-		return "MyBook";
+		return "myPage/MyBook";
 	}
 
 	@RequestMapping(value = "/myLike", method = RequestMethod.GET)
@@ -30,7 +30,7 @@ public class MyPageController {
 		
 		
 		
-		return "MyLike";
+		return "myPage/MyLike";
 	}
 	
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
@@ -38,7 +38,7 @@ public class MyPageController {
 		
 		
 		
-		return "MyPage";
+		return "myPage/MyPage";
 	}
 	
 	@RequestMapping(value = "/myReview", method = RequestMethod.GET)
@@ -46,6 +46,6 @@ public class MyPageController {
 		
 		
 		
-		return "myReview";
+		return "myPage/myReview";
 	}
 }

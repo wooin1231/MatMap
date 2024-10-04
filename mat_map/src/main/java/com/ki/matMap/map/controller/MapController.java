@@ -21,7 +21,7 @@ public class MapController {
 		
 		
 		
-		return "Map";
+		return "map/Map";
 	}
 
 }

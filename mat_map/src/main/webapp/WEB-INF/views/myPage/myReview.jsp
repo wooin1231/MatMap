@@ -25,7 +25,7 @@
 </style>
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/MyPage.jsp"%>
+	<%@ include file="/WEB-INF/views/myPage/MyPage.jsp"%>
 	
 	
 		<!-- Review Section -->
