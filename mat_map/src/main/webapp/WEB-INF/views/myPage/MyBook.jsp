@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<c:set var="root" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +25,7 @@
 		margin-left: 30px;
 	}
 	.card-body{
+		margin-top: 10px;
 		text-align: center;
 	}
 	
@@ -33,7 +34,16 @@
 	}
 	
 	.card-text{
-		margin-top:20px;
+	}
+	
+	.card-text2{
+		margin-top: -10px;
+		text-align: left;
+		font-size: 14px;
+	}
+	
+	.card-text3{
+		margin-top: -10px;
 	}
 </style>
 </head>
@@ -42,46 +52,19 @@
 
 	<section class="container" style="max-width: 620px; float: left;">
 		<div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: 20px; width: 650px; ">
+			
 			<div class="col">
 				<div class="card"  style = "height:260px;">
-					<img src= "assets/img/dogany.jpg" class="card-img-top" alt="..." style="width: 190px; height: 100px;">
+					<img src= "${root}/resources/assets/img/rsimg/dogany.jpg" class="card-img-top" alt="..." style="width: 190px; height: 100px;">
 					<div class="card-body">
 						<h5 class="card-title">대성집 도가니탕</h5>
 						<p class="card-text">서울특별시 종로구</p>
-						<button type="button" class="btn btn-light">상세보기</button>
+						<p class="card-text2">예약 날짜:<span>  2024-10-23</span></p>
+						<p class="card-text3">2인</p>
 					</div>
 				</div>
 			</div>
-			<div class="col">
-				<div class="card"  style = "height:260px;">
-					<img src= "assets/img/dogany.jpg" class="card-img-top" alt="..." style="width: 190px; height: 100px;">
-					<div class="card-body">
-						<h5 class="card-title">대성집 도가니탕</h5>
-						<p class="card-text">서울특별시 종로구</p>
-						<button type="button" class="btn btn-light">상세보기</button>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card"  style = "height:260px;">
-					<img src= "assets/img/dogany.jpg" class="card-img-top" alt="..." style="width: 190px; height: 100px;">
-					<div class="card-body">
-						<h5 class="card-title">대성집 도가니탕</h5>
-						<p class="card-text">서울특별시 종로구</p>
-						<button type="button" class="btn btn-light">상세보기</button>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card"  style = "height:260px;">
-					<img src= "assets/img/dogany.jpg" class="card-img-top" alt="..." style="width: 190px; height: 100px;">
-					<div class="card-body">
-						<h5 class="card-title">대성집 도가니탕</h5>
-						<p class="card-text">서울특별시 종로구</p>
-						<button type="button" class="btn btn-light">상세보기</button>
-					</div>
-				</div>
-			</div>
+			
 		</div>
 	</section>
 </body>

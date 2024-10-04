@@ -53,16 +53,6 @@
 				
 				<div class="card-body">
 					<p class="card-text">정말 맛있었습니다 다음에도 오려고요</p>
-					<img src="assets/img/dogany.jpg" class="rounded float-start"
-						style="width: 100px; height: 100px;" alt="..."> <img
-						src="assets/img/dogany.jpg" class="rounded float-start"
-						style="width: 100px; height: 100px;" alt="..."> <img
-						src="assets/img/dogany.jpg" class="rounded float-start"
-						style="width: 100px; height: 100px;" alt="..."> <img
-						src="assets/img/dogany.jpg" class="rounded float-start"
-						style="width: 100px; height: 100px;" alt="..."> <img
-						src="assets/img/dogany.jpg" class="rounded float-start"
-						style="width: 100px; height: 100px;" alt="...">
 						
 						
 				</div>
@@ -87,10 +77,6 @@
 				</div>
 				<div class="card-body">
 					<p class="card-text">정말 맛있었습니다 다음에도 오려고요</p>
-					<img src="assets/img/dogany.jpg" class="rounded float-start"
-						style="width: 100px; height: 100px;" alt="..."> <img
-						src="assets/img/dogany.jpg" class="rounded float-start"
-						style="width: 100px; height: 100px;" alt="...">
 				</div>
 	
 			</div>
@@ -111,10 +97,6 @@
 				</div>
 				<div class="card-body">
 					<p class="card-text">정말 맛있었습니다 다음에도 오려고요</p>
-					<img src="assets/img/dogany.jpg" class="rounded float-start"
-						style="width: 100px; height: 100px;" alt="..."> <img
-						src="assets/img/dogany.jpg" class="rounded float-start"
-						style="width: 100px; height: 100px;" alt="...">
 				</div>
 				</div>
 				
