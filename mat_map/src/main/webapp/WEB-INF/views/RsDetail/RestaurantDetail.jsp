@@ -4,6 +4,7 @@
 	<!DOCTYPE html>
 	<%@ page language="java" contentType="text/html; charset=UTF-8"
 		pageEncoding="UTF-8"%>
+<c:set var="root" value="${pageContext.request.contextPath}" />
 	<html lang="en">
 	<style>
 	@import
@@ -156,7 +157,7 @@
 		border-left: none;
 		border-right: none;
 		border-bottom: none;
-		padding-top: - 100px;
+		padding-top: - 100px; 
 	}
 	
 	table.storeMap th {
@@ -572,7 +573,7 @@
 			   });
 			   
 			   
-			   var myIcon = new google.maps.MarkerImage("assets/img/miJeongMarker.png", null, null, null, new google.maps.Size(40,50));
+			   var myIcon = new google.maps.MarkerImage("${root}/resources/assets/img/logo/matMapFinal.png", null, null, null, new google.maps.Size(40,50));
 	
 			   var marker = new google.maps.Marker({ // 마커 재정의
 				     position: place,

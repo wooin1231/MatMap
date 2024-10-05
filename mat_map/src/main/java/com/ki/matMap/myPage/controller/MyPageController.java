@@ -48,4 +48,12 @@ public class MyPageController {
 		
 		return "myPage/myReview";
 	}
+	
+	@RequestMapping(value = "/myReviewUp", method = RequestMethod.GET)
+	public String myReviewUp(Locale locale, Model model) {
+		
+		
+		
+		return "myPage/ReviewUpdate";
+	}
 }
