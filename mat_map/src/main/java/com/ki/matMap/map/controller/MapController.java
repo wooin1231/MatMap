@@ -23,5 +23,14 @@ public class MapController {
 		
 		return "map/Map";
 	}
+	
+	@RequestMapping(value = "/mapTest", method = RequestMethod.GET)
+	public String mapTest(Locale locale, Model model) {
+		
+		
+		
+		return "map/mapTest";
+	}
+
 
 }
