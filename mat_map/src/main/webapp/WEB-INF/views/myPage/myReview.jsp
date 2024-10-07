@@ -34,7 +34,15 @@ body{
 }
 .container {
 
-	margin-left: 30px;
+	margin-right: 20px;
+}
+
+.card{
+	margin-top: 16px;
+	margin-left: 25px;
+	max-width: 620px; 
+	max-height: 400px; 
+	margin-bottom: 20px;
 }
 
 .card-body {
@@ -54,12 +62,12 @@ body{
         .modal {
             display: none; /* 기본적으로 숨김 */
             position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 50%;
- 			left: 50%;
- 			transform: translate(-50%, -50%);
- 			 background-color: rgba(0, 0, 0, 0);
+			  top: 0;
+			  bottom: 0;
+			  left: 0;
+			  right: 0;
+			  margin: auto;
+ 			background-color: rgba(0, 0, 0, 0);
             justify-content: center;
             align-items: center;
             box-shadow: none;
@@ -134,9 +142,8 @@ body{
 
 
 	<!-- Review Section -->
-	<section class="container" style="max-width: 620px; float: left;">
-		<div class="card"
-			style="margin-top: 20px; max-width: 620px; max-height: 400px; margin-bottom: 20px;">
+	<section class="container" style="max-width: 650px; float: left;">
+		<div class="card">
 			<div class="row" style="margin-top: 20px;">
 				<div class="col-2 text-center">
 					<h5>김철수</h5>
@@ -236,6 +243,7 @@ body{
 		</div>
 		</div>
 		
+</body>		
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -285,5 +293,5 @@ body{
 
 	</script>
 
-</body>
+
 </html>

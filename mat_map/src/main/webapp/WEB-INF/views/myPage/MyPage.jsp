@@ -15,7 +15,6 @@
    			width:300px;
    			background-color: white;
    			border-right:2px solid #ff7f00;
-   			
    			height:350px;
    			margin-top: 30px;
    			margin-left:100px;
@@ -32,9 +31,10 @@
    			font-size:15px ;
    			color:#555 ;
    			text-decoration: none;
-   			margin-top: 30px;
+   			margin-top: 0px;
    			margin-left:30px ;
    			text-align: center ;
+   			margin-bottom: -10px;
    		}
    		
    		#home:hover{
@@ -51,6 +51,7 @@
    			text-decoration: none;
    			margin-top: 30px;
    			margin-left:30px ;
+   			margin-bottom: -10px;
    			text-align: center ;
    		}
    		
@@ -68,6 +69,7 @@
    			text-decoration: none;
    			margin-top: 30px;
    			margin-left:30px ;
+   			margin-bottom: -10px;
    			text-align: center ;
    		}
    		
@@ -85,6 +87,7 @@
    			text-decoration: none;
    			margin-top: 30px;
    			margin-left:30px ;
+   			margin-bottom: -10px;
    			text-align: center ;
    		}
    		
@@ -111,17 +114,31 @@
    		}
 
    		
-   	
    
   	
 </style>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
+<jsp:include page="/WEB-INF/views/main/header.jsp"/>
 </head>
-<body>	
-			
-		 	<table class="MyPageTitle">
+<body>
+
+	<!-- Navigator-->
+	<jsp:include page="/WEB-INF/views/main/nav.jsp" />
+	<!-- Search -->
+	<section class="search-container">
+		<div>
+			<input class="search-input shadow-search" type="text"
+				placeholder="🔍 맛집 이름, 장소, 주소, 유튜브 채널명 등을 입력해주세요. "> <img
+				class="search-img"
+				src="https://github.com/user-attachments/assets/56e17edd-45c3-4582-a6ce-f611333d03fe"
+				alt="landing-img" />
+		</div>
+	</section>
+
+	<table class="MyPageTitle">
 				<tr id="MyPageTitle">
 					<th scope="row"></th>
 						<td><h2>MyPage</h2></td>
@@ -135,14 +152,14 @@
 			<div id="middleLine"></div>
 			<li><a onclick="location.href='/myReview'" id="myReview"  style="font-weight:bold">리뷰</a></li>
 			<div id="middleLine"></div>
-			<li><a onclick="location.href='/MyLike'" id="like"  style="font-weight:bold">좋아요</a></li>
+			<li><a onclick="location.href='/myLike'" id="like"  style="font-weight:bold">좋아요</a></li>
 			<div id="middleLine"></div>
-			<li><a onclick="location.href='/MyBook'" id="book"  style="font-weight:bold">예약 내역</a></li>
+			<li><a onclick="location.href='/myBook'" id="book"  style="font-weight:bold">예약 내역</a></li>
 		</ul>
-			
+
 	</div>	
 	
-	
+			
 		
 </body>
  <!-- Bootstrap core JS-->

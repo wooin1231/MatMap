@@ -24,6 +24,9 @@
 	.container{
 		margin-left: 30px;
 	}
+	
+	
+	
 	.card-body{
 		margin-top: 10px;
 		text-align: center;
@@ -51,7 +54,7 @@
 	<%@ include file="/WEB-INF/views/myPage/MyPage.jsp"%>
 
 	<section class="container" style="max-width: 620px; float: left;">
-		<div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: 20px; width: 650px; ">
+		<div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: 20px;margin-left: 20px; width: 650px; ">
 			
 			<div class="col">
 				<div class="card"  style = "height:260px;">

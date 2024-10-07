@@ -262,29 +262,7 @@
 	<link href="css/styles.css" rel="stylesheet" />
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light" id="mainNav">
-			<div class="container px-4 px-lg-5"" >
-				<a class="navbar-brand" href="#page-top"><img
-					src="assets/img/MatMap.png" alt="..." style="height: 80px;" /></a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-					aria-controls="navbarResponsive" aria-expanded="false"
-					aria-label="Toggle navigation">
-					Menu <i class="fas fa-bars ms-1"></i>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" id="foodType" href="foodType">음식 종류별 맛집</a></li>
-						<li class="nav-item"><a class="nav-link" id="famousMap"
-							href="famousMap">유명인 Map</a></li>
-						<li class="nav-item"><a class="nav-link" id="notice"
-							href="notice">게시판</a></li>
-						<li class="nav-item"><a class="nav-link" id="use" href="use">이용방법</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+		
 	
 	
 		<div class="slider">
@@ -324,7 +302,6 @@
 			<div class="title">
 				<div class="title">
 					<p class="rating">⭐ 4.0 / 5.0</p>
-					<p>입에 착 감기는 40년 내공의 도가니 국물</p>
 				</div>
 			</div>
 	
@@ -544,20 +521,6 @@
 	<script type="text/javascript"
 		src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<script>
-	
-	/*   window.initMap = function () {
-		   
-		   const detailMap = new google.maps.Map(document.getElementById("detailMap"), {
-		    center: { lat: 37.56992, lng: 126.9620 },
-		    zoom: 15,
-		   });
-		  
-		  const locations = [
-			    { name: "대성집 도가니탕", lat: 37.56992, lng: 126.9620 }
-			  ];
-		  
-		
-		};   */
 	
 		   var map; // 전역변수로 만들어둬야함
 		   
