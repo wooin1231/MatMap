@@ -3,16 +3,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<jsp:include page="header.jsp"/>
+		<jsp:include page="/WEB-INF/views/main/header.jsp"/>
     </head>
     <body>
         <!-- Navigator -->
-		<jsp:include page="nav.jsp"/>
-        <!-- Landing Page -->
-        <section class="landing-page">
+		<jsp:include page="/WEB-INF/views/main/nav.jsp"/>
+        <!-- Search -->
+        <section class="search-container">
         	<div>
-        		<input class="landing-search shadow-search" type="text" placeholder="🔍 맛집 이름, 장소, 주소, 유튜브 채널명 등을 입력해주세요. ">
-        		<img class="landing-img" src="https://github.com/user-attachments/assets/56e17edd-45c3-4582-a6ce-f611333d03fe" alt="landing-img"/>
+        		<input class="search-input shadow-search" type="text" placeholder="🔍 맛집 이름, 장소, 주소, 유튜브 채널명 등을 입력해주세요. ">
+        		<img class="search-img" src="https://github.com/user-attachments/assets/56e17edd-45c3-4582-a6ce-f611333d03fe" alt="landing-img"/>
         	</div>
         </section>
         <!-- Contents Page -->
@@ -277,6 +277,6 @@
         	</div>
         </section>
         <!-- Footer -->
-        <jsp:include page="footer.jsp"/>
+        <jsp:include page="/WEB-INF/views/main/footer.jsp"/>
     </body>
 </html>

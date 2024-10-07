@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-    	<jsp:include page="header.jsp"/>
+    	<jsp:include page="/WEB-INF/views/main/header.jsp"/>
     </head>
     <body>
         <!-- Navigator -->
-		<jsp:include page="nav.jsp"/>
+		<jsp:include page="/WEB-INF/views/main/nav.jsp"/>
         <!-- Contents Page -->
 		<section class="review-page shadow">
 			<div class="review-page-title fw-bolder">🔔 리뷰 등록</div>
@@ -47,6 +47,6 @@
 			</div>
 		</section>
         <!-- Footer -->
-        <jsp:include page="footer.jsp"/>
+        <jsp:include page="/WEB-INF/views/main/footer.jsp"/>
     </body>
 </html>

@@ -17,11 +17,11 @@ public class MapController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/map", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String map(Locale locale, Model model) {
 		
 		
 		
-		return "map/Map";
+		return "map/map";
 	}
 	
 	@RequestMapping(value = "/mapTest", method = RequestMethod.GET)

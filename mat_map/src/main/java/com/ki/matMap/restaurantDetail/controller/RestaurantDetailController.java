@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-public class RestaurantController {
+public class RestaurantDetailController {
 	
 	
 	/**
@@ -22,7 +22,7 @@ public class RestaurantController {
 		
 		
 		
-		return "RsDetail/RestaurantDetail";
+		return "rsDetail/RestaurantDetail";
 	}
 
 }

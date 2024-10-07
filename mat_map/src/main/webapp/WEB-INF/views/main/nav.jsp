@@ -10,10 +10,10 @@
                 <a class="title-nav-bar fw-bolder" href="#">미정(<span class="chinese" style="font-weight:100;">味停</span>)</a>
             </span>
             <span class="nav-right">
-                <a class="menu-nav-bar fw-bolder" href="#">홈</a>                
-                <a class="menu-nav-bar fw-bolder" href="#">TOP 100</a>                
-                <a class="menu-nav-bar fw-bolder" href="#">맛집 지도</a>                
-                <a class="menu-nav-bar fw-bolder" href="#">로그인</a>                
+                <a class="menu-nav-bar fw-bolder" href="/home">홈</a>                
+                <a class="menu-nav-bar fw-bolder" href="/ranking">랭킹</a>                
+                <a class="menu-nav-bar fw-bolder" href="/map">맛집 지도</a>                
+                <a class="menu-nav-bar fw-bolder" href="/login">로그인</a>                
             </span>
         </nav>
     </body>

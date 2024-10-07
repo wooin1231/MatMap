@@ -42,7 +42,7 @@ public class MyPageController {
 	}
 	
 	@RequestMapping(value = "/myReview", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String myReview(Locale locale, Model model) {
 		
 		
 		
