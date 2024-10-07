@@ -133,11 +133,11 @@
 		<ul class="menu">
 			<li><a onclick="location.href='/member/MyPage'" id="home" style="font-weight:bold">회원정보</a></li>
 			<div id="middleLine"></div>
-			<li><a onclick="location.href='/matMap01/myReview'" id="myReview"  style="font-weight:bold">리뷰</a></li>
+			<li><a onclick="location.href='/myReview'" id="myReview"  style="font-weight:bold">리뷰</a></li>
 			<div id="middleLine"></div>
-			<li><a onclick="location.href='/matMap01/MyLike'" id="like"  style="font-weight:bold">좋아요</a></li>
+			<li><a onclick="location.href='/MyLike'" id="like"  style="font-weight:bold">좋아요</a></li>
 			<div id="middleLine"></div>
-			<li><a onclick="location.href='/matMap01/MyBook'" id="book"  style="font-weight:bold">예약 내역</a></li>
+			<li><a onclick="location.href='/MyBook'" id="book"  style="font-weight:bold">예약 내역</a></li>
 		</ul>
 			
 	</div>	

@@ -7,21 +7,7 @@
 <html lang="en">
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <style>
-.navbar-brand>img {
-	width: 70px;
-}
 
-.navbar {
-	background-color: lightgray !important;
-}
-
-.nav li a {
-	background-color: red;
-}
-
-.nav .active a {
-	background-color: orange !important;
-}
 
 #map {
 	width: 1000px;
@@ -120,52 +106,9 @@
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 </head>
-<body id="page-top">
+<body >
 	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-		<div class="container">
-			<a class="navbar-brand" href="#page-top"><img
-				src="assets/img/MatMap.png" alt="..." style="height: 80px;" /></a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				Menu <i class="fas fa-bars ms-1"></i>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-					<li class="nav-item"><a class="nav-link" id="foodType"
-						href="foodType">음식 종류별 맛집</a></li>
-					<li class="nav-item"><a class="nav-link" id="famousMap"
-						href="famousMap">유명인 Map</a></li>
-					<li class="nav-item"><a class="nav-link" id="notice"
-						href="notice">게시판</a></li>
-					<li class="nav-item"><a class="nav-link" id="use" href="use">이용방법</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- Masthead-->
-	<!--  <header class="masthead">
-            <div class="container">
-                <div class="masthead-subheading">Welcome To Our Studio!</div>
-                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
-            </div>
-        </header> -->
-	<!-- Services-->
-	<section class="page-section" id="services">
-		<div class="container">
-			<div class="text-center">
-				<h2 class="section-heading text-uppercase">Services</h2>
-				<h3 class="section-subheading text-muted">Lorem ipsum dolor sit
-					amet consectetur.</h3>
-			</div>
-			<div class="row text-center"></div>
-		</div>
-	</section>
-	<!-- Portfolio Grid-->
-
+	<%@ include file="/WEB-INF/views/main/header.jsp"%>
 	<!-- About-->
 	<section class="page-section" id="celMap">
 		<div class="container">
@@ -278,13 +221,13 @@
 	   });
 	  
 	  const locations = [
-		    { label: "C", name: "대성집 도가니탕", lat: 37.57271, lng: 126.9609 },
-		    { label: "G", name: "어머니 대성집 해장국", lat: 37.57746, lng: 127.0286 },
-		    { label: "D", name: "약수 순대국", lat: 37.5532076, lng: 127.007702 },
-		    { label: "I", name: "IFC몰", lat: 37.5251644, lng: 127.0106781 },
-		    { label: "L", name: "롯데월드타워몰", lat: 37.5125585, lng: 127.1025353 },
-		    { label: "M", name: "명동지하상가", lat: 37.563692, lng: 126.9822107 },
-		    { label: "T", name: "타임스퀘어", lat: 37.5173108, lng: 126.9033793 },
+		    { label: "C", title: "대성집 도가니탕", description: "서울특별시 종로구",image:"https://www.mukbangmap.com/_next/image?url=https%3A%2F%2Fi3.ytimg.com%2Fvi%2Fwu1fOmsPEr8%2Fmqdefault.jpg&w=640&q=75",lat: 37.57271, lng: 126.9609 },
+		    { label: "G", title: "어머니 대성집 해장국", lat: 37.57746, lng: 127.0286 },
+		    { label: "D", title: "약수 순대국", lat: 37.5532076, lng: 127.007702 },
+		    { label: "I", title: "IFC몰", lat: 37.5251644, lng: 127.0106781 },
+		    { label: "L", title: "롯데월드타워몰", lat: 37.5125585, lng: 127.1025353 },
+		    { label: "M", title: "명동지하상가", lat: 37.563692, lng: 126.9822107 },
+		    { label: "T", title: "타임스퀘어", lat: 37.5173108, lng: 126.9033793 },
 		  ];
 	  
 	
@@ -292,27 +235,48 @@
 	  var myIcon = new google.maps.MarkerImage("${root}/resources/assets/img/logo/matMapFinal.png", null, null, null, new google.maps.Size(40,50));
 	  
 	  const bounds = new google.maps.LatLngBounds();
-	  const infowindow = new google.maps.InfoWindow();
 	  const modal = document.querySelector('.modal');
 	  const modaldialog = document.querySelector('.modal-dialog');
 	  
-	  locations.forEach(({ label, name, lat, lng }) => {
+	  locations.forEach(({ label, title, description, image , lat, lng }) => {
 		    const marker = new google.maps.Marker({
 		      position: { lat, lng },
 		      label,
 		      map,
-		      icon: myIcon
+		      icon: myIcon,
+		      title: locations.title,
+		      image: locations.image
 		    });
 		    bounds.extend(marker.position);
 		    
+		 
+
+	        // InfoWindow 내용
+	     	 var contentString = 
+	            '<div class="info-window">' + 
+	                '<img src="${locations.image}" alt="${locations.title}">'+
+	                '<div class="content">'+
+	                   "<h5>"+ '${locations.title}' +"</h5>"+
+	                    "<p>" + '${locations.description}'  + "</p>"+
+	                    '<button type="button" class="btn btn-light">상세보기</button>'+
+	                '</div>'+
+	            '</div>'
+	        ; 
+	            
+	          
+	            
+	        var infoWindow = new google.maps.InfoWindow({
+	            content: contentString
+	        });
+
+		    
 		    marker.addListener("click", function() {
-				  map.panTo(marker.position);
+				  /* map.panTo(marker.position);
+				  map.setZoom(8); */
+		    	infoWindow.open(map, marker);
+		    	map.panTo(marker.position);
 				  map.setZoom(8);
-				  infowindow.setContent(name);
-			      infowindow.open({
-			        anchor: marker,
-			        map,
-			      });
+				  alert("왜 안담기나"+ contentString);
 			    });
 			    });
 		    
