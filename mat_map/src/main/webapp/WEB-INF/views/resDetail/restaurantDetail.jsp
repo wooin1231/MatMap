@@ -211,6 +211,91 @@
   z-index: 9 ;  
 }
 
+
+ .modal__background{
+ display:none;
+  position: fixed;
+  top:0; left: 0; bottom: 0; right: 0;
+ 	background-color: rgba(0, 0, 0, 0.5);
+ 	border:none;
+}
+
+ .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+		   	bottom: 0;
+			left: 0;
+			right: 0;
+			margin-left: 500px;
+            background-color: rgba(0, 0, 0, 0.5);	
+           max-height: 600px;
+           max-width: 1000px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover, 
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+ .modal__background2{
+ display:none;
+  position: fixed;
+  top:0; left: 0; bottom: 0; right: 0;
+ 	border:none;
+}
+
+ #bookmodal {
+            display: none;
+            position: fixed;
+            top: 0;
+		   	bottom: 0;
+			left: 0;
+			right: 0;
+            max-height: 1200px;
+        }
+
+      
+
+        .close {
+            color: #aaa;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover, 
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
 	</style>
 	<head>
 		<meta name="viewport"
@@ -227,6 +312,10 @@
 			content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<meta name="description" content="" />
 		<meta name="author" content="" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
 		<!-- Favicon-->
 		<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 		<jsp:include page="/WEB-INF/views/main/header.jsp"/>
@@ -280,13 +369,18 @@
 				aria-label="Basic mixed styles example">
 				<button type="button" class="btn btn-danger"
 					style="background-color: #ff7f00; border-color: white;">좋아요</button>
-				<button type="button" class="btn btn-danger"
+				<button type="button" class="btn btn-danger" id="reviewWri"
 					style="background-color: #ff7f00; border-color: white;">리뷰
 					쓰기</button>
-				<button type="button" class="btn btn-danger"
+				<button type="button" class="btn btn-danger" id="bookBtn"
 					style="background-color: #ff7f00; border-color: white;">예약하기</button>
 			</div>
 	
+	
+			
+			
+			
+		
 	
 			<div class="card" style="width: 850px;">
 	
@@ -460,8 +554,22 @@
 			</div>
 					<button type="button" class="btn btn-danger" id = "plusButton" onclick="plusReview();" style="background-color: #ff7f00;">더보기</button>
 		</section>
+		<!-- 모달 -->
+			<div class="modal__background">
+				<div id="reviewModal" class="modal">
+				<span class="close" id="close-modal">&times;</span>
+						<%@ include file="/WEB-INF/views/restaurant/review.jsp"%>
+				</div>
+			</div>
 		
 		
+		<!-- 모달 -->
+			<div class="modal__background2">
+				<div id="bookmodal" class="modal">
+				<span class="close" id="close-modal2">&times;</span>
+						<%@ include file="/WEB-INF/views/restaurant/book.jsp"%>
+				</div>
+			</div>
 		<!-- Footer -->
         <jsp:include page="/WEB-INF/views/main/footer.jsp"/>
 	</body>
@@ -569,8 +677,41 @@
 			
 				$('#stNum').attr('style', "text-align:start;"); 
 				
-				
+				$('#reviewWri').click(function(){
+					$('.modal__background').fadeIn();
+			        $('.modal').show();   //id가 "followModal"인 모달창을 열어준다. 
+			    });
+				 
+				  $('#close-modal').on('click', function() {
+					  $('.modal__background').fadeOut();
+			            $('.modal').fadeOut();
+			        });
+				  
+				  // 모달 바깥 클릭 시 닫기
+			      $(window).on('click', function(event) {
+			         if ($(event.target).is('#reviewModal')) {
+			        	 $('.modal__background').fadeOut();
+		               $('.modal').fadeOut();	            }
+			        });
 		     
+				  
+			      $('#bookBtn').click(function(){
+						$('.modal__background2').fadeIn();
+				        $('#bookmodal').show();   //id가 "followModal"인 모달창을 열어준다. 
+				    });
+					 
+					  $('#close-modal2').on('click', function() {
+						  $('.modal__background2').fadeOut();
+				            $('#bookmodal').fadeOut();
+				        });
+					  
+					  // 모달 바깥 클릭 시 닫기
+				      $(window).on('click', function(event) {
+				         if ($(event.target).is('#bookmodal')) {
+				        	 $('.modal__background2').fadeOut();
+			               $('#bookmodal').fadeOut();	            }
+				        });
+			     
 			
 	</script>
 	<script

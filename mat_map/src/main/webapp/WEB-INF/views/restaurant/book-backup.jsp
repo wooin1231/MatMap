@@ -3,10 +3,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+    	<jsp:include page="/WEB-INF/views/main/header.jsp"/>
    	    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
     </head>
     <body>
         <!-- Navigator -->
+        <jsp:include page="/WEB-INF/views/main/nav.jsp"/>
         <!-- Contents Page -->
 		<section class="book-page shadow">
 			<div class="book-page-title fw-bolder">🔔 예약 등록</div>
@@ -102,6 +104,7 @@
 			</div>
 		</section>
         <!-- Footer -->
+        <jsp:include page="/WEB-INF/views/main/footer.jsp"/>
     </body>
 	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 	<script>
@@ -209,7 +212,7 @@
 			// 클릭된 위치가 폼이 아닐 경우 가정
 			if (!optionTime.contains(event.target) &&
 				!placeholderTime.contains(event.target) &&
-				!arrowTime.contains(event.target)) {incl
+				!arrowTime.contains(event.target)) {
 				
 				optionTime.classList.remove('show');
 				arrowTime.classList.remove('rotation');

@@ -2,23 +2,21 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
-<style>
-	body{
-		
-	}
-</style>
-
     <head>
+    	<jsp:include page="/WEB-INF/views/main/header.jsp"/>
     </head>
     <body>
         <!-- Navigator -->
+		<jsp:include page="/WEB-INF/views/main/nav.jsp"/>
         <!-- Contents Page -->
-		<section class="review-page shadow" style="margin: 0 auto; margin-left: 20px;">
+		<section class="review-page shadow">
 			<div class="review-page-title fw-bolder">🔔 리뷰 등록</div>
 			<br/>
 			<div class="review-form-items">
-				
+				<div>
+					<div class="review-title fw-bolder">📌 제목</div>
+					<input type="text" class="form-control review-title-input" placeholder="제목을 입력하세요."/>
+				</div>
 				
 				<br/>
 				
@@ -39,7 +37,8 @@
 			</div>
 			<div class="review-button-items">
 				<div class="review-button-img">
-					
+					<input type="file" id="review-img" class="none" multiple accept="image/*">
+					<label class="btn btn-outline-dark mt-auto button-img fw-bolder" for="review-img">이미지 선택</label>
 				</div>
 				<div class="review-button-basic">
 					<button class="btn btn-outline-dark mt-auto fw-bolder">등록</button>
@@ -48,5 +47,6 @@
 			</div>
 		</section>
         <!-- Footer -->
+        <jsp:include page="/WEB-INF/views/main/footer.jsp"/>
     </body>
 </html>

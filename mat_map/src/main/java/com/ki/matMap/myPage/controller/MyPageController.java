@@ -65,11 +65,8 @@ public class MyPageController {
 		return "myPage/myInfo";
 	}
 	
-	@RequestMapping(value = "/myUpdate", method = RequestMethod.GET)
-	public String myUpdate(Locale locale, Model model) {
-		
-		
-		
-		return "myPage/myUpdate";
-	}
+	
+	
 }
+
+
