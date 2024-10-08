@@ -19,4 +19,11 @@ public class MainController {
 
 	}
 	
+	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
+	public String ranking(Locale locale, Model model) {
+		
+		return "main/ranking";
+		
+	}
+	
 }
