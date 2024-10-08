@@ -32,9 +32,10 @@
         </style>
         <!-- Bootstrap Icons -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/resources/css/styles.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/resources/css/nav.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet" />
-        <link href="${pageContext.request.contextPath}/resources/css/styles.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/resources/css/ranking.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/resources/css/review.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/resources/css/book.css" rel="stylesheet" />
     </head>

@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.pagination-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    text-align: center;
+	height: 10vh;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	gap: 3rem;
+}
+
+.pagination-container li,
+.pagination-container .page-item,
+.pagination-container .page-link {
+	width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+	box-sizing: border-box;
+}
+
+.pagination-container li:hover,
+.pagination-container .page-item:hover,
+.pagination-container .page-link:hover {
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+	box-sizing: border-box;
+}

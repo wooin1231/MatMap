@@ -190,11 +190,11 @@
 						</div>
 						<div class="col mb-5">
 	                        <div class="card h-100 shadow">
-	                            <img class="card-img-top" src="https://www.mukbangmap.com/_next/image?url=https%3A%2F%2Fi3.ytimg.com%2Fvi%2FhtNjA3YqbG0%2Fmqdefault.jpg&w=640&q=75" alt="card-contents"/>
+	                            <img class="card-img-top" src="https://www.mukbangmap.com/_next/image?url=https%3A%2F%2Fi3.ytimg.com%2Fvi%2FDbkkQTWZDUA%2Fmqdefault.jpg&w=640&q=75" alt="card-contents"/>
 	                            <div class="card-body p-4">
 	                                <div class="text-center">
-	                                    <div class="sub-title fw-bolder">소나무집</div>
-	                                    <div class="text">경기도 하남시</div>
+	                                    <div class="sub-title fw-bolder">한재골 가든</div>
+	                                    <div class="text">전라남도 담양군</div>
 	                                </div>
 	                            </div>
 	                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
@@ -215,11 +215,11 @@
 						</div>
 						<div class="col mb-5">
 	                        <div class="card h-100 shadow">
-	                            <img class="card-img-top" src="https://www.mukbangmap.com/_next/image?url=https%3A%2F%2Fi3.ytimg.com%2Fvi%2FhtNjA3YqbG0%2Fmqdefault.jpg&w=640&q=75" alt="card-contents"/>
+	                            <img class="card-img-top" src="https://www.mukbangmap.com/_next/image?url=https%3A%2F%2Fi3.ytimg.com%2Fvi%2FIaPvcG_zlSw%2Fmqdefault.jpg&w=640&q=75" alt="card-contents"/>
 	                            <div class="card-body p-4">
 	                                <div class="text-center">
-	                                    <div class="sub-title fw-bolder">소나무집</div>
-	                                    <div class="text">경기도 하남시</div>
+	                                    <div class="sub-title fw-bolder">여수집국밥</div>
+	                                    <div class="text">광주시 북구</div>
 	                                </div>
 	                            </div>
 	                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
@@ -240,11 +240,11 @@
 						</div>
 						<div class="col mb-5">
 	                        <div class="card h-100 shadow">
-	                            <img class="card-img-top" src="https://www.mukbangmap.com/_next/image?url=https%3A%2F%2Fi3.ytimg.com%2Fvi%2FhtNjA3YqbG0%2Fmqdefault.jpg&w=640&q=75" alt="card-contents"/>
+	                            <img class="card-img-top" src="https://www.mukbangmap.com/_next/image?url=https%3A%2F%2Fi3.ytimg.com%2Fvi%2FGKqA4DvWlEU%2Fmqdefault.jpg&w=640&q=75" alt="card-contents"/>
 	                            <div class="card-body p-4">
 	                                <div class="text-center">
-	                                    <div class="sub-title fw-bolder">소나무집</div>
-	                                    <div class="text">경기도 하남시</div>
+	                                    <div class="sub-title fw-bolder">우촌숯불갈비</div>
+	                                    <div class="text">서울시 성동구</div>
 	                                </div>
 	                            </div>
 	                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
@@ -265,11 +265,11 @@
 						</div>
 						<div class="col mb-5">
 	                        <div class="card h-100 shadow">
-	                            <img class="card-img-top" src="https://www.mukbangmap.com/_next/image?url=https%3A%2F%2Fi3.ytimg.com%2Fvi%2FhtNjA3YqbG0%2Fmqdefault.jpg&w=640&q=75" alt="card-contents"/>
+	                            <img class="card-img-top" src="https://www.mukbangmap.com/_next/image?url=https%3A%2F%2Fi3.ytimg.com%2Fvi%2FXRbZ93mHyp4%2Fmqdefault.jpg&w=640&q=75" alt="card-contents"/>
 	                            <div class="card-body p-4">
 	                                <div class="text-center">
-	                                    <div class="sub-title fw-bolder">소나무집</div>
-	                                    <div class="text">경기도 하남시</div>
+	                                    <div class="sub-title fw-bolder">바스버거</div>
+	                                    <div class="text">서울시 성동구</div>
 	                                </div>
 	                            </div>
 	                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
@@ -291,6 +291,26 @@
 					</div>
 				</div>
         	</div>
+        </section>
+        <!-- Pagination -->
+        <section>
+        	<ul class="pagination-container">
+		        <li class="page-item">
+		            <a class="page-link" href="#" aria-label="Previous">
+		                <span aria-hidden="true">&laquo;</span>
+		            </a>
+		        </li>
+		        <li class="page-item"><a class="page-link" href="#">1</a></li>
+		        <li class="page-item"><a class="page-link" href="#">2</a></li>
+		        <li class="page-item"><a class="page-link" href="#">3</a></li>
+		        <li class="page-item"><a class="page-link" href="#">4</a></li>
+		        <li class="page-item"><a class="page-link" href="#">5</a></li>
+		        <li class="page-item">
+		            <a class="page-link" href="#" aria-label="Next">
+		                <span aria-hidden="true">&raquo;</span>
+		            </a>
+		        </li>
+        	</ul>
         </section>
         <!-- Footer -->
         <jsp:include page="/WEB-INF/views/main/footer.jsp"/>
