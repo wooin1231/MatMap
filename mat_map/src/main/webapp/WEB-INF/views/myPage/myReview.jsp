@@ -25,7 +25,6 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
-<title>Insert title here</title>
 <style>
 
 body{
@@ -138,7 +137,7 @@ body{
 </style>
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/myPage/MyPage.jsp"%>
+	<%@ include file="/WEB-INF/views/myPage/myPage.jsp"%>
 
 
 	<!-- Review Section -->

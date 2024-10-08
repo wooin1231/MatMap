@@ -6,7 +6,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원정보 수정 - MATMAP</title>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -77,7 +76,7 @@
     </style>
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/myPage/MyPage.jsp"%>
+	<%@ include file="/WEB-INF/views/myPage/myPage.jsp"%>
 <div class="container" style="max-width: 650px; float: left;">
     <div class="logo"></div> 
 
