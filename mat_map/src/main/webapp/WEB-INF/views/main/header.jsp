@@ -30,7 +30,6 @@
 		    	font-family: "Chinese", Chinese;
 		    }
         </style>
-        <!-- Bootstrap Icons -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/resources/css/styles.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/resources/css/nav.css" rel="stylesheet" />
@@ -38,5 +37,6 @@
         <link href="${pageContext.request.contextPath}/resources/css/ranking.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/resources/css/review.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/resources/css/book.css" rel="stylesheet" />
+        <link rel="icon" type="image/*" href="/resources/assets/matmap.ico" />
     </head>
 </html>

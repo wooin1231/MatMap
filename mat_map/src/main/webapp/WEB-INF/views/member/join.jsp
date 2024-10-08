@@ -105,7 +105,7 @@
 		        <label for="email">이메일 (Email)</label>
 		        <input type="email" id="email" name="email" required>
 		    </div>
-		    <button class="button" onClick="goJoin();">가입하기 (Register)</button> 
+		    <button class="button">가입하기 (Register)</button> 
 		</section>
         <!-- Footer -->
         <jsp:include page="/WEB-INF/views/main/footer.jsp"/>
