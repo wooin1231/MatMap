@@ -7,22 +7,17 @@
 <c:set var="root" value="${pageContext.request.contextPath}" />
 	<html lang="en">
 	<style>
-	@import
-		url('https://fonts.googleapis.com/css?family=Lato:400,700,900|Open+Sans:300,400|Oswald:400,700')
-		;
 	
 	* {
 		padding: 0;
 		margin: 0;
 		box-sizing: border-box;
-		font-family: 'Lato', sans-serif;
 	}
 	
 	html, body {
 		
 	}
 	
-	/***************/
 	.slider {
 		margin: 0 auto;
 		width: 800px;
@@ -43,9 +38,9 @@
 		transform: scale(1.1);
 	}
 	
-	.RsTitle {
-		 position:  relative;
-		        left:  500px;
+	.rsTitle {
+		position:  relative;
+        left:  500px;
 	}
 	
 	.rating {
@@ -112,7 +107,6 @@
 		width: 40px;
 		height: 20px;
 		font-size: 13px;
-		font-family: 'Nanum Gothic';
 		color: black;
 		text-align: center;
 		border: solid 0.4px black;
@@ -134,7 +128,6 @@
 		width: 20px;
 		height: 20px;
 		font-size: 13px;
-		font-family: 'Nanum Gothic';
 		border: 1px solid #ccc;
 	}
 	
@@ -219,50 +212,28 @@
 }
 
 	</style>
-	<!-- <link
-	  rel="stylesheet"
-	  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-	/>
-	
-	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 -->
-	
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"> -->
 	<head>
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1.0, user-scalable=no" />
-	<meta charset="UTF-8">
-	
-	<title>Insert title here</title>
-	<link rel="stylesheet" type="text/css"
-		href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-	<!-- Add the slick-theme.css if you want default styling -->
-	<link rel="stylesheet" type="text/css"
-		href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-		<link rel="stylesheet" href="${root}/resources/css/map.css">
-	<link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" >
-	<!-- Google fonts-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-		rel="stylesheet" type="text/css" />
-	<link
-		href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
-		rel="stylesheet" type="text/css" />
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="description" content="" />
-	<meta name="author" content="" />
-	<title>Agency - Start Bootstrap Theme</title>
-	<!-- Favicon-->
-	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-	<!-- Font Awesome icons (free version)-->
-	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-		crossorigin="anonymous"></script>
-	<!-- Core theme CSS (includes Bootstrap)-->
-	<link href="css/styles.css" rel="stylesheet" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, user-scalable=no" />
+		<meta charset="UTF-8">
+		
+		<link rel="stylesheet" type="text/css"
+			href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+		<!-- Add the slick-theme.css if you want default styling -->
+		<link rel="stylesheet" type="text/css"
+			href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+			<link rel="stylesheet" href="${root}/resources/css/map.css">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+		<!-- Favicon-->
+		<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+		<jsp:include page="/WEB-INF/views/main/header.jsp"/>
 	</head>
 	<body>
-		
+		<!-- Navigator -->
+		<jsp:include page="/WEB-INF/views/main/nav.jsp"/>
 	
 	
 		<div class="slider">
@@ -296,9 +267,9 @@
 			
 	
 		<section class="container" style="max-width: 850px; max-height: 600px;">
-			<h2 style="font-size: 30px; margin-top: -120px;" class="RsTitle">
+			<div style="font-size: 2rem; margin-top: -120px;" class="rsTitle fw-bolder">
 				<strong>대성집 도가니탕</strong>
-			</h2>
+			</div>
 			<div class="title">
 				<div class="title">
 					<p class="rating">⭐ 4.0 / 5.0</p>
@@ -414,42 +385,19 @@
 								</div>
 							</td>
 						</tr>
-	
-	
-						<!-- <tr>
-							<th scope="row"></th>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr> -->
-	
 					</table>
-	
-	
-	
 				</div>
-	
 			</div>
-	
-	
 		</section>
-	
-	
-	
 	
 		<!-- Review Section -->
 		<section class="container" style="max-width: 850px;">
-			<h3>미정 리뷰</h3>
+			<div class="fw-bolder" style="font-size: 1.8rem">미정 리뷰</div>
 	
 			<div class="card" style="margin-top: 20px; width: 850px;">
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-2 text-center">
-						<h5>김철수</h5>
+						<div class="fw-bolder" style="font-size: 1.2rem">김철수</div>
 					</div>
 					<div class="col-9 text-end">
 						<p>2024-09-29 23:27:05</p>
@@ -472,7 +420,7 @@
 			<div class="card" style="margin-top: 20px; width: 850px;">
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-2 text-center">
-						<h5>김철수</h5>
+						<div class="fw-bolder" style="font-size: 1.2rem">김철수</div>
 					</div>
 					<div class="col-9 text-end">
 						<p>2024-09-29 23:27:05</p>
@@ -493,7 +441,7 @@
 			<div class="card" style="margin-top: 20px; width: 850px;">
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-2 text-center">
-						<h5>김철수</h5>
+						<div class="fw-bolder" style="font-size: 1.2rem">김철수</div>
 					</div>
 					<div class="col-9 text-end">
 						<p>2024-09-29 23:27:05</p>
@@ -514,7 +462,8 @@
 		</section>
 		
 		
-	
+		<!-- Footer -->
+        <jsp:include page="/WEB-INF/views/main/footer.jsp"/>
 	</body>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
