@@ -5,9 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="mapMapper">
 
 
-	<select id="selectList" parameterType="String" resultType="RestaurantVO">
-  	SELECT  RS_NO, RS_LAT, RS_LONG, RS_NAME, RS_PLACE_ROAD
-        FROM RESTAURANT
-        WHERE RS_YOUTUBE like ''%' || #{rsYoutube} || '%'
-   </select>
+	<select id="getAllLocations" parameterType="String"  resultType="MapVo">
+	  	SELECT  RS_NO, RS_LAT, RS_LONG, RS_NAME, RS_PLACE_ROAD, RS_YOUTUBE, RS_YOUTUBE_IMG
+	        FROM RESTAURANT
+	       	WHERE RS_YOUTUBE = #{rsYoutube}
+	   </select>
 </mapper>

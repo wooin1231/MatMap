@@ -1,4 +1,10 @@
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring" xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	https://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 <!--  mybatis 설정  -->
 <mybatis-spring:scan base-package="com.ki.matMap"/>
 <!--  데이베이스 연동   -->
@@ -9,7 +15,7 @@
 <property name="password" value="qwop1231"/>
 </bean>
 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-<property name="configLocation" value="classpath:/mybatis/conf.xml"/>
+<property name="configLocation" value="classpath:config/mybatis-config.xml" />
 <property name="mapperLocations" value="classpath:/mybatis/mapper/*.xml"/>
 <property name="dataSource" ref="dataSource"/>
 </bean>

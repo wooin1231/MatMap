@@ -6,5 +6,5 @@ import com.ki.matMap.map.vo.MapVo;
 
 public interface MapService {
 	
-	List<MapVo> selectList(String rsYoutube);
+	List<MapVo> getAllLocations(String rsYoutube);
 }

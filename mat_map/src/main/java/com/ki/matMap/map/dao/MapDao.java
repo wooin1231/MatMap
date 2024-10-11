@@ -6,8 +6,10 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import org.apache.ibatis.annotations.Param;
+
 public interface MapDao {
 	
-	// 지도에 불러올 연예인들 조회
-	List<MapVo> selectList(SqlSessionTemplate sst,String rsYoutube);
+	// 정보 다가져오기
+	List<MapVo> getAllLocations(String rsYoutube);
 }

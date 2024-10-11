@@ -2,26 +2,24 @@ package com.ki.matMap.map.service;
 
 import java.util.List;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.ki.matMap.map.dao.MapDao;
 import com.ki.matMap.map.vo.MapVo;
 
 @Service
-public class MapServiceImpl {
+@Primary
+public class MapServiceImpl implements MapService {
 	
-	private final MapDao dao;
-	private final SqlSessionTemplate sst;
+	@Autowired
+	private MapDao mpDao;
 	
-	
-	public MapServiceImpl(MapDao dao, SqlSessionTemplate sst) {
-		this.dao = dao;
-		this.sst = sst;
-	}
 	
 	@Override
-	public List<MapVo> selectList(String rsYoutube) {
-		return dao.selectList(sst,rsYoutube);
+	public List<MapVo> getAllLocations(String rsYoutube) {
+		return mpDao.getAllLocations(rsYoutube);
+		
 	}
 }

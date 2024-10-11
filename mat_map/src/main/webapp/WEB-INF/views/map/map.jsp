@@ -1,9 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
-
-<!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+
 <html lang="en">
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <style>
@@ -86,11 +86,12 @@
 	}
 </style>
 <head>
+	<script async="false" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVAKmqq4jYs2WoHxXe2Qflj7hP8rgZc6Q&callback=initMap"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<meta charset="utf-8" />
 	<meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<link rel="stylesheet" href="/resources/css/map.css">
-	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<!-- Header -->
 	<jsp:include page="/WEB-INF/views/main/header.jsp"/>
 </head>
@@ -108,18 +109,12 @@
 	<section>
 		<div class="container">
 			<div class="text-center">
-				<input type="button" value="성시경" id="ssiKyung"
-					onclick="readValue();"
-					class="btn btn-outline-dark rounded-pill btn-lg"> <input
-					type="button" value="백종원" id="bjongWon" onclick="readValue();"
-					class="btn btn-outline-dark rounded-pill btn-lg"> <input
-					type="button" value="최자로드" id="chJaRoad" onclick="readValue();"
-					class="btn btn-outline-dark rounded-pill btn-lg"> <input
-					type="button" value="현주엽" id="HjooYeop" onclick="readValue();"
-					class="btn btn-outline-dark rounded-pill btn-lg"> <input
-					type="button" value="홍석천이원일" id="scwi" onclick="readValue();"
-					class="btn btn-outline-dark rounded-pill btn-lg">
-			</div>
+				 <button id="btnSung" class="btn btn-outline-dark rounded-pill btn-lg" onclick="loadMap('성시경 먹을텐데')">성시경 먹을텐데</button>
+		        <button id="btnBaek" class="btn btn-outline-dark rounded-pill btn-lg"  onclick="loadMap('백종원')">백종원</button>
+		        <button id="btnChoi" class="btn btn-outline-dark rounded-pill btn-lg"  onclick="loadMap('최자로드')" >최자로드</button>
+		        <button id="btnHyun" class="btn btn-outline-dark rounded-pill btn-lg"  onclick="loadMap('현주엽')">현주엽</button>
+		        <button id="btnHong" class="btn btn-outline-dark rounded-pill btn-lg"  onclick="loadMap('홍석천이원일')">홍석천이원일</button>
+		   </div>
 		</div>
 	</section>
 	<section>
@@ -133,71 +128,96 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-	window.initMap = function() {
 
-		const map = new google.maps.Map(document.getElementById("map"), {
-			center: { lat: 36.68914, lng: 127.2137 },
-			zoom: 7,
-			scrollwheel: true 
-		});
+			
+				let map;
+				var markers = [];
+				
+				// 구글 맵 초기화
+				function initMap() {
+				    map = new google.maps.Map(document.getElementById("map"), {
+				        center: { lat: 36.68914, lng: 127.2137 }, // 서울의 중심 좌표
+				        zoom: 7,
+				 	    scrollwheel: true 
 
-		const locations = [
-			{ label: "C", title: "대성집 도가니탕", description: "서울특별시 종로구",image:"https://www.mukbangmap.com/_next/image?url=https%3A%2F%2Fi3.ytimg.com%2Fvi%2Fwu1fOmsPEr8%2Fmqdefault.jpg&w=640&q=75",lat: 37.57271, lng: 126.9609 },
-			{ label: "G", title: "어머니 대성집 해장국", lat: 37.57746, lng: 127.0286 },
-			{ label: "D", title: "약수 순대국", lat: 37.5532076, lng: 127.007702 },
-			{ label: "I", title: "IFC몰", lat: 37.5251644, lng: 127.0106781 },
-			{ label: "L", title: "롯데월드타워몰", lat: 37.5125585, lng: 127.1025353 },
-			{ label: "M", title: "명동지하상가", lat: 37.563692, lng: 126.9822107 },
-			{ label: "T", title: "타임스퀘어", lat: 37.5173108, lng: 126.9033793 },
-		];
-		
-		var myIcon = new google.maps.MarkerImage("${root}/resources/assets/img/logo/matMapFinal.png", null, null, null, new google.maps.Size(40,50));
-		
-		const bounds = new google.maps.LatLngBounds();
-		
-		const modal = document.querySelector('.modal');
-		
-		const modaldialog = document.querySelector('.modal-dialog');
-		  
-		locations.forEach(({ label, title, description, image , lat, lng }) => {
-			const marker = new google.maps.Marker({
-				position: { lat, lng },
-				label,
-				map,
-				icon: myIcon,
-				title: title,
-				image: image
-			});
-			
-			bounds.extend(marker.position);
-			
-			// InfoWindow 내용
-			var contentString =
-				'<div class="card">' + 
-				'<img src="' + image + '" alt="' + title +'">' +
-				'<div class="content">' +
-				'<h5>' + title +'</h5>' +
-				'<p>' + description + '</p>' +
-				'<button type="button" class="btn btn-light" style="margin-top: -15px;">상세보기</button>' +
-				'</div>' +
-				'</div>'
-			;
-			
-			var infoWindow = new google.maps.InfoWindow({
-				content: contentString
-			});
-			
-			marker.addListener("click", function() {
-				/* map.panTo(marker.position);
-				map.setZoom(8); */
-				infoWindow.open(map, marker);
-				map.panTo(marker.position);
-			});
-		
-		/* forEach 닫는 태그 */
-		});
-	};
+				    });
+				}
+				
+				
+				// 마커 추가 함수
+				function addMarker(location, info) {
+					myIcon =  new google.maps.MarkerImage("${root}/resources/assets/img/logo/matMapFinal.png", null, null, null, new google.maps.Size(40,50));
+				    let marker = new google.maps.Marker({
+				        position: location,
+				        map: map,
+				        icon: myIcon
+				    });
+					
+				    var contentString = 
+	    	            '<div class="card">' + 
+	    	                '<img src="' + info.rsYoutubeImg +'" alt="' +  info.rsName +'">'+
+	    	                '<div class="content">'+
+	    	                   '<h5>' + info.rsName +'</h5>' +
+	    	                    '<p>'  +  info.rsPlaceRoad.substring(0, 5)  + '</p>'+
+	    	                    '<button type="button" <a href="/restaurantDetail?rsNo=${info.rsNo}" class="btn btn-light" style="margin-top: -15px;">상세보기</button>'+
+	    	                '</div>'+
+	    	            '</div>'
+	    	        ; 
+
+				    
+				    let infowindow = new google.maps.InfoWindow({
+				        content: contentString
+				    });
+				
+				    marker.addListener('click', function() {
+				        infowindow.open(map, marker);
+				    });
+				    
+				 // markers 배열에 마커 추가
+				    markers.push(marker);
+				}
+				
+				// 마커 초기화 함수 (기존 마커들 삭제)
+				function clearMarkers() {
+				    for (var i = 0; i < markers.length; i++) {
+				        markers[i].setMap(null);  // 마커를 지도에서 제거
+				    }
+				    markers = [];  // 배열 초기화
+				}
+
+				
+				// AJAX로 유튜버에 맞는 매장 정보 가져오기
+				function loadMap(youtuber) {
+				    $.ajax({
+				        url: "/getLocations",
+				        type: "GET",
+				        data: { rsYoutube: youtuber },
+				        dataType: "json",
+				        success: function(locations) {
+				        	  // 기존 마커들 초기화
+				            clearMarkers();
+
+				            // 새로운 마커들 추가
+				            if (locations.length > 0) {
+				                map.setCenter({ lat: locations[0].rsLat, lng: locations[0].rsLong });
+				                for (let i = 0; i < locations.length; i++) {
+				                    addMarker({ lat: locations[i].rsLat, lng: locations[i].rsLong }, locations[i]);
+				                }
+				            } else {
+				                console.log("No locations found for this YouTuber.");
+				            }
+				        },
+				        error: function(xhr, status, error) {
+				            console.log("Error: " + error);
+				            console.log("Status: " + status);
+				            console.log(xhr.responseText);  // 서버에서 보낸 에러 응답 확인
+				        }
+				    });
+				}
+				
+				// 구글 맵 초기화 호출
+				initMap();
 </script>
 <!-- 구글맵 API 스크립트 : initMap 기 정의 필요 -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVAKmqq4jYs2WoHxXe2Qflj7hP8rgZc6Q&callback=initMap"></script>
+
 </html>

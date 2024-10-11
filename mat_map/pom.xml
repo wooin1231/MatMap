@@ -32,6 +32,8 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		
+		
 				
 		<!-- AspectJ -->
 		<dependency>
@@ -141,48 +143,51 @@
 		<!-- 마이바티스 -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
-		    <artifactId>mybatis</artifactId>
-		    <version>3.5.10</version>
-		</dependency>
-		
-		<!-- 마이바티스 스프링 -->
+			<artifactId>mybatis</artifactId>
+			<version>3.5.6</version>
+		 </dependency>
+		 
+		 <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis-spring</artifactId>
-		    <version>2.0.7</version>
+		    <version>2.0.6</version>
 		</dependency>
-		
-		<!-- JDBC -->
-		<!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
-	<dependency>
-	     <groupId>org.mariadb.jdbc</groupId>
-	     <artifactId>mariadb-java-client</artifactId>
-	     <version>3.1.0</version>
-	</dependency>
 		
 		<!-- 스프링 JDBC -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
-		    <version>${org.springframework-version}</version>
+		    <version>5.3.22</version>
 		</dependency>
 		
-		<!-- DBCP (커넥션 풀) -->
-		<!-- <dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-dbcp2</artifactId>
-		    <version>2.9.0</version>
-		</dependency> -->
+		<dependency>
+		    <groupId>org.mariadb.jdbc</groupId>
+		    <artifactId>mariadb-java-client</artifactId>
+		    <version>2.7.12</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+	        <artifactId>commons-dbcp2</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+		
+		 <dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>2.9.0</version>
+		</dependency>
 		
 		<!--
 	커넥션 풀을 사용하기 위한 라이브러리
 	https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
-		<dependency>
+<!-- 		<dependency>
 		    <groupId>commons-dbcp</groupId>
 		    <artifactId>commons-dbcp</artifactId>
 		    <version>1.4</version>
 		</dependency>
-		
+		 -->
 		
 		
 		<dependency>
@@ -198,8 +203,15 @@
 		    <artifactId>spring-tx</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
-
 		
+		
+		<!-- Jackson 라이브러리 -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.12.5</version>
+		</dependency>
+				
 		<!-- 롬복 -->
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		 <dependency>
