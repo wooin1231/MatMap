@@ -133,10 +133,6 @@
 				let map;
 				var markers = [];
 				
-				// 현재 열려있는 InfoWindow를 저장하는 변수
-				var currentInfoWindow = null;
-
-				
 				// 구글 맵 초기화
 				function initMap() {
 				    map = new google.maps.Map(document.getElementById("map"), {
@@ -171,19 +167,10 @@
 				    
 				    let infowindow = new google.maps.InfoWindow({
 				        content: contentString
-				    }); 
+				    });
 				
 				    marker.addListener('click', function() {
-				    	// 현재 열려 있는 InfoWindow가 있으면 닫기
-				        if (currentInfoWindow) {
-				            currentInfoWindow.close();
-				        }
-
-				        // 새로 클릭한 마커의 InfoWindow 열기
 				        infowindow.open(map, marker);
-
-				        // 현재 열려 있는 InfoWindow 업데이트
-				        currentInfoWindow = infowindow;
 				    });
 				    
 				 // markers 배열에 마커 추가
@@ -196,12 +183,6 @@
 				        markers[i].setMap(null);  // 마커를 지도에서 제거
 				    }
 				    markers = [];  // 배열 초기화
-				    
-				    // InfoWindow도 초기화
-				    if (currentInfoWindow) {
-				        currentInfoWindow.close();  // 열려있는 InfoWindow 닫기
-				        currentInfoWindow = null;   // InfoWindow 변수 초기화
-				    }
 				}
 
 				
