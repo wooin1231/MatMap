@@ -12,7 +12,10 @@
     <typeAliases>
 	
 	<typeAlias alias="MapVo" type="com.ki.matMap.map.vo.MapVo"/>
-		
+	<typeAlias alias="RestaurantVo" type="com.ki.matMap.restaurantDetail.vo.RestaurantVo"/>
+	<typeAlias alias="RsImgVo" type="com.ki.matMap.restaurantDetail.vo.RsImgVo"/>
+	<typeAlias alias="RsMenuVo" type="com.ki.matMap.restaurantDetail.vo.RsMenuVo"/>
+	<typeAlias alias="RsReviewVo" type="com.ki.matMap.restaurantDetail.vo.RsReviewVo"/>	
 	</typeAliases>	
 
    

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rsMapper">
+ <!-- 식당 정보 가져오기 -->
+    <select id="getRstById" resultType="RestaurantVo">
+        SELECT *
+        	FROM RESTAURANT
+         	WHERE rs_no = #{rsNo}
+    </select>
+
+    <!-- 식당 이미지 리스트 가져오기 -->
+    <select id="getRsImages" resultType="RsImgVo">
+        SELECT RS_IMG_PATH FROM RS_IMG WHERE rs_no = #{rsNo}
+    </select>
+
+    <!-- 식당 메뉴 가져오기 -->
+    <select id="getRsMenu" resultType="RsMenuVo">
+        SELECT RS_FOOD_MENU, RS_FOOD_PRICE FROM RS_MENU WHERE rs_no = #{rsNo}
+    </select>
+
+    <!-- 리뷰 리스트 가져오기 (3개씩 페이징) -->
+    <select id="getRev" resultType="RsReviewVo">
+        SELECT R.RS_REV_RATING AS RS_REV_RATING , 
+        R.REV_CONTENTS AS REV_CONTENTS, 
+        R.REV_CREATE_DATE AS REV_CREATE_DATE,
+        R.REV_UPDATE_DATE AS REV_UPDATE_DATE, 
+        M.MEM_NO AS MEM_NO,
+        M.MEM_NICK AS MEM_NICK
+        FROM REVIEW R
+        JOIN MEMBER M ON R.MEM_NO = M.MEM_NO
+        WHERE R.rs_no = #{rsNo}
+    </select>
+
+    <!-- 리뷰 평균 별점 가져오기 -->
+    <select id="getAverageRating" resultType="double">
+        SELECT IFNULL(AVG(RS_REV_RATING),0) FROM REVIEW WHERE rs_no = #{rsNo}
+    </select>
+    
+   
+
+</mapper>

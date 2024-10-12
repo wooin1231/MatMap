@@ -84,6 +84,12 @@
 		margin-top: auto;
 		font-size: 14px;
 	}
+	
+	button.selected{
+	  color: white;
+	  background-color: black;
+	}
+
 </style>
 <head>
 	<script async="false" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVAKmqq4jYs2WoHxXe2Qflj7hP8rgZc6Q&callback=initMap"></script>
@@ -109,7 +115,7 @@
 	<section>
 		<div class="container">
 			<div class="text-center">
-				 <button id="btnSung" class="btn btn-outline-dark rounded-pill btn-lg" onclick="loadMap('성시경 먹을텐데')">성시경 먹을텐데</button>
+				 <button id="btnSung" class="btn btn-outline-dark rounded-pill btn-lg" style="" onclick="loadMap('성시경 먹을텐데')">성시경 먹을텐데</button>
 		        <button id="btnBaek" class="btn btn-outline-dark rounded-pill btn-lg"  onclick="loadMap('백종원')">백종원</button>
 		        <button id="btnChoi" class="btn btn-outline-dark rounded-pill btn-lg"  onclick="loadMap('최자로드')" >최자로드</button>
 		        <button id="btnHyun" class="btn btn-outline-dark rounded-pill btn-lg"  onclick="loadMap('현주엽')">현주엽</button>
@@ -129,9 +135,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 
-			
+				
+				$('button').on('click', function(){
+				    $('button').removeClass('selected');
+				    $(this).addClass('selected');
+				});
+				
 				let map;
 				var markers = [];
+				
+				// 현재 열려있는 InfoWindow를 저장하는 변수
+				var currentInfoWindow = null;
+
 				
 				// 구글 맵 초기화
 				function initMap() {
@@ -159,7 +174,7 @@
 	    	                '<div class="content">'+
 	    	                   '<h5>' + info.rsName +'</h5>' +
 	    	                    '<p>'  +  info.rsPlaceRoad.substring(0, 5)  + '</p>'+
-	    	                    '<button type="button" <a href="/restaurantDetail?rsNo=${info.rsNo}" class="btn btn-light" style="margin-top: -15px;">상세보기</button>'+
+	    	                    '<button type="button"  class="btn btn-light" style="margin-top: -15px;" onclick="location.href=\'/restaurantDetail/' + info.rsNo + '\' ">상세보기</button>'+
 	    	                '</div>'+
 	    	            '</div>'
 	    	        ; 
@@ -167,10 +182,19 @@
 				    
 				    let infowindow = new google.maps.InfoWindow({
 				        content: contentString
-				    });
+				    }); 
 				
 				    marker.addListener('click', function() {
+				    	// 현재 열려 있는 InfoWindow가 있으면 닫기
+				        if (currentInfoWindow) {
+				            currentInfoWindow.close();
+				        }
+
+				        // 새로 클릭한 마커의 InfoWindow 열기
 				        infowindow.open(map, marker);
+
+				        // 현재 열려 있는 InfoWindow 업데이트
+				        currentInfoWindow = infowindow;
 				    });
 				    
 				 // markers 배열에 마커 추가
@@ -183,6 +207,12 @@
 				        markers[i].setMap(null);  // 마커를 지도에서 제거
 				    }
 				    markers = [];  // 배열 초기화
+				    
+				    // InfoWindow도 초기화
+				    if (currentInfoWindow) {
+				        currentInfoWindow.close();  // 열려있는 InfoWindow 닫기
+				        currentInfoWindow = null;   // InfoWindow 변수 초기화
+				    }
 				}
 
 				
@@ -214,6 +244,7 @@
 				        }
 				    });
 				}
+				
 				
 				// 구글 맵 초기화 호출
 				initMap();

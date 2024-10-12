@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page session="false"%>
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -19,6 +20,7 @@
 			.slider {
 				margin: 0 auto;
 				width: 800px;
+				height: 500px;
 			}
 			
 			.slick-slide {
@@ -28,9 +30,17 @@
 			}
 			
 			.slick-slide img {
+				margin: 0 auto;
 				max-width: 100%;
 				transition: all 0.4s ease-in-out;
-			}
+				height: 400px;
+			} 
+			
+			/*   .slider img {
+            width: 200px;
+            height: auto;
+        } */
+			
 			
 			.slick-center {
 				transform: scale(1.1);
@@ -135,7 +145,7 @@
 				height: 13px;
 			}
 			
-			table.storeMap {
+			 table.storeMap {
 				float: left;
 				width: 400px;
 				border: 1px solid black;
@@ -169,14 +179,11 @@
 				border-bottom: none;
 				width: 40px;
 				height: 400px;
-			}
+			} 
 			
 			#map {
-				margin-top: 10px;
-				width: 300px;
-				height: 400px;
-				margin-left: 70px;
-				margin-right: auto;
+				  width: 100%;
+          		 height: 300px; /* 높이 설정 */
 			}
 			
 			.card-text {
@@ -189,7 +196,7 @@
 				text-align: center;
 			}
 			
-			#plusButton{
+			#showMoreReviews{
 				margin-top: 20px;
 				width:850px;
 			}
@@ -295,62 +302,96 @@
 	            cursor: pointer;
 			}
         </style>
+        <script async="false" type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVAKmqq4jYs2WoHxXe2Qflj7hP8rgZc6Q&callback=initMap"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+	 <!-- jQuery 로드 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Slick Slider CSS 로드 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+    <!-- Slick Slider JS 로드 -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		
 		<link rel="stylesheet" href="${root}/resources/css/map.css">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<meta name="description" content="" />
-		<meta name="author" content="" />
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
-		<link rel="icon" type="image/x-icon" href="assets/matmap.ico" />
+		
 		<jsp:include page="/WEB-INF/views/main/header.jsp"/>
 	</head>
+	
+	 <!-- Slick Slider 초기화 -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.slider').slick({
+                arrows: true,        // 왼쪽, 오른쪽 화살표
+                dots: true,          // 아래 점 네비게이션
+                infinite: true,      // 무한 반복
+                speed: 500,          // 슬라이드 속도
+                slidesToShow: 1,     // 한 번에 표시할 슬라이드 개수
+                slidesToScroll: 1    // 한 번에 스크롤할 슬라이드 개수
+            });
+            
+            
+            // 리뷰를 3개씩 보여주는 로직
+		    let reviewIndex = 0;
+		    const reviewStep = 3;
+		    const totalReviews = $(".card").length;
+		
+		    function showMoreReviews() {
+		        for (let i = reviewIndex; i < reviewIndex + reviewStep && i < totalReviews; i++) {
+		            $(".card").eq(i).show();
+		        }
+		        reviewIndex += reviewStep;
+		
+		        // 모든 리뷰가 보여졌다면 버튼 숨김
+		        if (reviewIndex >= totalReviews) {
+		            $("#showMoreReviews").hide();
+		        }
+		    }
+		
+		    $(".card").hide(); // 처음에 리뷰 숨기기
+		    showMoreReviews(); // 초기 3개 리뷰 보여주기
+		
+		    $("#showMoreReviews").click(function() {
+		        showMoreReviews();
+		    });
+	
+        });
+        
+    
+    </script>
+    
+   
 	<body>
 		<!-- Navigator -->
 		<jsp:include page="/WEB-INF/views/main/nav.jsp"/>
 		<!-- Contents -->
-		<div class="slider">
-			<div class="item">
-				<img
-					src="https://images.unsplash.com/photo-1485550409059-9afb054cada4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
-					alt="" />
-			</div>
-			<div class="item">
-				<img
-					src="https://images.unsplash.com/photo-1485550409059-9afb054cada4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
-					alt="" />
-			</div>
-			<div class="item">
-				<img
-					src="https://images.unsplash.com/photo-1485550409059-9afb054cada4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
-					alt="" />
-			</div>
-			<div class="item">
-				<img
-					src="https://images.unsplash.com/photo-1485550409059-9afb054cada4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
-					alt="" />
-			</div>
-			<div class="item">
-				<img
-					src="https://images.unsplash.com/photo-1485550409059-9afb054cada4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80"
-					alt="" />
-			</div>
-		</div>
+
+		
+	  <!-- 슬릭슬라이더 이미지 섹션 -->
+	    <div class="slider">
+	        <c:forEach var="img" items="${images}">
+	            <div>
+	                <img src="${img.rsImgPath}" alt="Restaurant Image">
+	            </div>
+	        </c:forEach>
+	    </div>
+
 			
-		<section class="container" style="max-width: 850px; max-height: 600px;">
+		<section class="container" style="max-width: 850px; max-height: 600px; margin-top: 50px;">
 			<div style="font-size: 2rem; margin-top: -120px;" class="rsTitle fw-bolder">
-				<strong>대성집 도가니탕</strong>
+				<strong>${restaurant.rsName}</strong>
 			</div>
 			<div class="title">
 				<div class="title">
-					<p class="rating">⭐ 4.0 / 5.0</p>
+					<p class="rating">⭐<fmt:formatNumber value="${averageRating}" type="number" maxFractionDigits="1"/> </p>
 				</div>
 			</div>
 
 			<!-- Modal Container -->	
-			<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+			<div class="btn-group" role="group" aria-label="Basic mixed styles example" style="margin-top: 20px;">
 			<button type="button" class="btn btn-danger"
 					style="background-color: #ff7f00; border-color: white;">좋아요</button>
 			<button type="button" class="btn btn-danger" id="reviewWri"
@@ -358,19 +399,19 @@
 			<button type="button" class="btn btn-danger" id="bookBtn"
 					style="background-color: #ff7f00; border-color: white;">예약 등록</button>
 			</div>
-			<div class="modal-review">
+		<%-- 	<div class="modal-review">
 				<div id="reviewModal" class="modal">
 				<span class="close" id="close-modal">&times;</span>
 						<%@ include file="/WEB-INF/views/restaurant/review.jsp"%>
 				</div>
-			</div>
+			</div> --%>
 		
-			<div class="modal-book">
+			<%-- <div class="modal-book">
 				<div id="bookmodal" class="modal">
 				<span class="close" id="close-modal2">&times;</span>
 						<%@ include file="/WEB-INF/views/restaurant/book.jsp"%>
 				</div>
-			</div>
+			</div> --%>
 			
 			<div class="card" style="width: 850px;">
 				<div id="infoTable">
@@ -381,15 +422,15 @@
 						</tr>
 						<tr>
 							<th scope="row">영업시간</th>
-							<td colspan="8">주중 12:00 ~ 23:00</td>
+							<td colspan="8">주중 ${restaurant.rsOpenTime} ~ ${restaurant.rsCloseTime}</td>
 						</tr>
 						<tr>
 							<th scope="row">휴무일</th>
-							<td colspan="8">매주 일요일</td>
+							<td colspan="8">${restaurant.rsCloseDay}</td>
 						</tr>
 						<tr>
 							<th scope="row">주소</th>
-							<td colspan="8">서울특별시 서대문구 옥천동 70번지 1층</td>
+							<td colspan="8">${restaurant.rsPlaceRoad}</td>
 						</tr>
 						<tr>
 							<th scope="row"></th>
@@ -397,50 +438,32 @@
 								<div id="btn2">지번</div>
 							</td>
 							<td colspan="5" id="stNum">
-								<p class="stNump">행촌동 209-35</p>
+								<p class="stNump">${restaurant.rsPlaceLocal}</p>
 							</td>
 						</tr>
+						<c:forEach var="menu" items="${menus}" varStatus = "status">
 						<tr id="first">
+							<c:choose>
+							<c:when test="${status.first}">
 							<th scope="row">메뉴</th>
-							<td colspan="4">도가니탕</td>
-							<td colspan="4">13000원</td>
+							</c:when>
+							<c:otherwise>
+			                    <td></td>
+			                </c:otherwise>
+							</c:choose>
+							<td colspan="4">${menu.rsFoodMenu}</td>
+							<td colspan="4">${menu.rsFoodPrice}원</td>
 						</tr>
-						<tr id="second">
-							<th scope="row"></th>
-							<td colspan="4">도가니탕</td>
-							<td colspan="4">13000원</td>
-						</tr>
-						<tr id="next">
-							<th scope="row"></th>
-							<td colspan="4">도가니탕</td>
-							<td colspan="3">13000원</td>
-							<td><img src="assets/img/skip.png" id="nextButton"></img></td>
-						</tr>
-						<tr id="four" style="display: none;">
-							<th scope="row">메뉴</th>
-							<td colspan="4">도가니탕</td>
-							<td colspan="4">13000원</td>
-						</tr>
-						<tr id="five" style="display: none;">
-							<th scope="row"></th>
-							<td colspan="4">도가니탕</td>
-							<td colspan="4">13000원</td>
-						</tr>
-						<tr id="prev" style="display: none;">
-							<th scope="row"></th>
-							<td colspan="4"></td>
-							<td colspan="3"></td>
-							<td><img src="assets/img/prev.png" id="prevButton"></img></td>
-						</tr>
+						</c:forEach>
 						<tr>
 							<th scope="row">전화번호</th>
-							<td colspan="8">010-0000-0000</td>
+							<td colspan="8">${restaurant.rsPhone}</td>
 						</tr>
 	
 						<tr>
 							<th scope="row">미디어</th>
 							<td colspan="8"><img src="assets/img/youtube logo.png" alt=""
-								id="mediaImage" /> 성시경 먹을텐데</td>
+								id="mediaImage" /> ${restaurant.rsYoutube}</td>
 						</tr>
 	
 						<tr class="hidden" id="last">
@@ -460,13 +483,13 @@
 					<table class="storeMap">
 						<tr>
 							<th scope="row"></th>
-							<td colspan="8">
+							<td colspan="8"> 
 								<div class="container">
 									<div id="map"></div>
 								</div>
 							</td>
 						</tr>
-					</table>
+					</table> 
 				</div>
 			</div>
 		</section>
@@ -474,72 +497,30 @@
 		<!-- Review Section -->
 		<section class="container" style="max-width: 850px;">
 			<div class="fw-bolder" style="font-size: 1.8rem">미정 리뷰</div>
-	
+	   <c:forEach var="review" items="${reviews}">
 			<div class="card" style="margin-top: 20px; width: 850px;">
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-2 text-center">
-						<div class="fw-bolder" style="font-size: 1.2rem">김철수</div>
+						<div class="fw-bolder" style="font-size: 1.2rem"> ${review.memNick}</div>
 					</div>
 					<div class="col-9 text-end">
-						<p>2024-09-29 23:27:05</p>
+						<p>${review.revCreateDate}</p>
 					</div>
 				</div>
 				<div class="col-1 text-center"
 					style="margin-left: 10px; margin-top: -10px;">
 					<p class="rating2">
-						⭐<strong>5</strong>
+						⭐<strong>${review.rsRevRating}</strong>
 					</p>
 				</div>
 				<div class="card-body">
-					<p class="card-text">정말 맛있었습니다 다음에도 오려고요</p>
-					
-						
+					<p class="card-text">${review.revContents}</p>
 				</div>
-	
 			</div>
 	
-			<div class="card" style="margin-top: 20px; width: 850px;">
-				<div class="row" style="margin-top: 20px;">
-					<div class="col-2 text-center">
-						<div class="fw-bolder" style="font-size: 1.2rem">김철수</div>
-					</div>
-					<div class="col-9 text-end">
-						<p>2024-09-29 23:27:05</p>
-					</div>
-				</div>
-				<div class="col-1 text-center"
-					style="margin-left: 10px; margin-top: -10px;">
-					<p class="rating2">
-						⭐<strong>5</strong>
-					</p>
-				</div>
-				<div class="card-body">
-					<p class="card-text">정말 맛있었습니다 다음에도 오려고요</p>
-					
-				</div>
-	
-			</div>
-			<div class="card" style="margin-top: 20px; width: 850px;">
-				<div class="row" style="margin-top: 20px;">
-					<div class="col-2 text-center">
-						<div class="fw-bolder" style="font-size: 1.2rem">김철수</div>
-					</div>
-					<div class="col-9 text-end">
-						<p>2024-09-29 23:27:05</p>
-					</div>
-				</div>
-				<div class="col-1 text-center"
-					style="margin-left: 10px; margin-top: -10px;">
-					<p class="rating2">
-						⭐<strong>5</strong>
-					</p>
-				</div>
-				<div class="card-body">
-					<p class="card-text">정말 맛있었습니다 다음에도 오려고요</p>
-				</div>
-	
-			</div>
-					<button type="button" class="btn btn-danger" id = "plusButton" onclick="plusReview();" style="background-color: #ff7f00;">더보기</button>
+			
+		</c:forEach>	
+			<button type="button" class="btn btn-danger" id = "showMoreReviews"  style="background-color: #ff7f00;">더보기</button>		
 		</section>
 
 		<!-- Footer -->
@@ -553,134 +534,63 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<script>
 	
-		   var map; // 전역변수로 만들어둬야함
-		   
-		   function initMap() {
-			   var place = { // 경도 위도 설정
-			     lat: 37.56993,
-			     lng: 126.9620
-			   };
-			   var map = new google.maps.Map(document.getElementById('map'), {
-			     zoom: 16,
-			     center: place, // 정해준 경도,위도가 가운데로 갈 수 있게
-			     scrollwheel: true // 우리가 쓴 zoom이랑 같은데 스크롤 기능 활성화
-			   });
-			   
-			   
-			   var myIcon = new google.maps.MarkerImage("${root}/resources/assets/img/logo/matMapFinal.png", null, null, null, new google.maps.Size(40,50));
 	
-			   var marker = new google.maps.Marker({ // 마커 재정의
-				     position: place,
-				     map: map,
-				     icon: myIcon,
-				    
-				   }); 
-		   }
+	    
+			   // 구글 맵 초기화
+			let map;
+
+			  function initMap() {
+			    // 지도 옵션 설정
+			    const mapOptions = {
+			      center: { lat: parseFloat("${restaurant.rsLat}"), lng: parseFloat("${restaurant.rsLong}") }, // 좌표 설정
+			      zoom: 15, // 줌 레벨 설정
+			    };
+			
+			    // 지도를 표시할 위치
+			    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+			
+			    // 마커 생성
+			    const marker = new google.maps.Marker({
+			      position: { lat: parseFloat("${restaurant.rsLat}"), lng: parseFloat("${restaurant.rsLong}") },
+			      map: map,
+			      title: "${restaurant.rsName}", // 마커의 제목
+			    });
+			  };
 		  
 	$(document).ready(function () {
-	    $(".slider").slick({
-	    	  centerMode: true,
-	    	  centerPadding: '60px',
-	    	  slidesToShow: 3,
-	    	  responsive: [
-	    	    {
-	    	      breakpoint: 768,
-	    	      settings: {
-	    	        arrows: true,
-	    	        centerMode: true,
-	    	        centerPadding: '60px',
-	    	        slidesToShow: 3,
-	    	        prevArrow : "<button type='button' class='slick-prev'>Previous</button>",
-	    	      }
-	    	    },
-	    	    {
-	    	      breakpoint: 480,
-	    	      settings: {
-	    	        arrows: true,
-	    	        centerMode: true,
-	    	        centerPadding: '60px',
-	    	        slidesToShow: 1,
-	    	        nextArrow : "<button type='button' class='slick-next'>Next</button>",
-	    	      }
-	    	    }
-	    	  ]
-	    	});
+		$('.center').slick({
+			  centerMode: true,
+			  centerPadding: '60px',
+			  slidesToShow: 3,
+			  responsive: [
+			    {
+			      breakpoint: 768,
+			      settings: {
+			        arrows: false,
+			        centerMode: true,
+			        centerPadding: '40px',
+			        slidesToShow: 3
+			      }
+			    },
+			    {
+			      breakpoint: 480,
+			      settings: {
+			        arrows: false,
+			        centerMode: true,
+			        centerPadding: '40px',
+			        slidesToShow: 1
+			      }
+			    }
+			  ]
+			});
 	  });
 	
-	
-	  
-			$(function(){
-				$("#nextButton").click(function(){
-					//사용하고자 하는 함수
-					nextMenu();
-					
-				});
-				
-				$("#prevButton").click(function(){
-					//사용하고자 하는 함수
-					prevMenu();
-					
-				});
-				
-			});	
-	
-			function nextMenu(){
-				$('#first').attr('style', "display:none;");
-				$('#second').attr('style', "display:none;");
-				$('#next').attr('style', "display:none;");
-				$('#four').attr('style', "display:'';");
-				$('#five').attr('style', "display:'';");
-				$('#prev').attr('style', "display:'';");
-			}  
 		
-			function prevMenu(){
-				$('#first').attr('style', "display:'';");
-				$('#second').attr('style', "display:'';");
-				$('#next').attr('style', "display:'';");
-				$('#four').attr('style', "display:none;");
-				$('#five').attr('style', "display:none;");
-				$('#prev').attr('style', "display:none;");
-			}  
-			
-				$('#stNum').attr('style', "text-align:start;"); 
-				
-				$('#reviewWri').click(function(){
-					$('.modal-review').fadeIn();
-			        $('.modal').show();   //id가 "followModal"인 모달창을 열어준다. 
-			    });
-				 
-				  $('#close-modal').on('click', function() {
-					  $('.modal-review').fadeOut();
-			            $('.modal').fadeOut();
-			        });
-				  
-				  // 모달 바깥 클릭 시 닫기
-			      $(window).on('click', function(event) {
-			         if ($(event.target).is('#reviewModal')) {
-			        	 $('.modal-review').fadeOut();
-		               $('.modal').fadeOut();	            }
-			        });
-		     
-				  
-			      $('#bookBtn').click(function(){
-						$('.modal-book').fadeIn();
-				        $('#bookmodal').show();   //id가 "followModal"인 모달창을 열어준다. 
-				    });
-					 
-					  $('#close-modal2').on('click', function() {
-						  $('.modal-book').fadeOut();
-				            $('#bookmodal').fadeOut();
-				        });
-					  
-					  // 모달 바깥 클릭 시 닫기
-				      $(window).on('click', function(event) {
-				         if ($(event.target).is('#bookmodal')) {
-				        	 $('.modal-book').fadeOut();
-			               $('#bookmodal').fadeOut();	            }
-				        });
-			     
+	
+	
+    
+	
 			
 	</script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVAKmqq4jYs2WoHxXe2Qflj7hP8rgZc6Q&callback=initMap"></script>
+	
 	</html>
