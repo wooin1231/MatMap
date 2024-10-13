@@ -146,7 +146,7 @@
 		
 		<div id="leftNav">
 		<ul class="menu">
-			<li><a onclick="location.href='/member/MyPage'" id="home" style="font-weight:bold">회원정보</a></li>
+			<li><a onclick="location.href='/myInfo'" id="home" style="font-weight:bold">회원정보</a></li>
 			<div id="middleLine"></div>
 			<li><a onclick="location.href='/myReview'" id="myReview"  style="font-weight:bold">리뷰</a></li>
 			<div id="middleLine"></div>
