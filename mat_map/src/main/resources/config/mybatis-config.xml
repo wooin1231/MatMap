@@ -16,6 +16,7 @@
 	<typeAlias alias="RsImgVo" type="com.ki.matMap.restaurantDetail.vo.RsImgVo"/>
 	<typeAlias alias="RsMenuVo" type="com.ki.matMap.restaurantDetail.vo.RsMenuVo"/>
 	<typeAlias alias="RsReviewVo" type="com.ki.matMap.restaurantDetail.vo.RsReviewVo"/>	
+	<typeAlias alias="userVo" type="com.ki.matMap.user.vo.userVo"/>	
 	</typeAliases>	
 
    

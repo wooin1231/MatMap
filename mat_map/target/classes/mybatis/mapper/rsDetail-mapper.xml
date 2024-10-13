@@ -31,6 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         FROM REVIEW R
         JOIN MEMBER M ON R.MEM_NO = M.MEM_NO
         WHERE R.rs_no = #{rsNo}
+        ORDER BY REV_CREATE_DATE DESC;
     </select>
 
     <!-- 리뷰 평균 별점 가져오기 -->
@@ -38,6 +39,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT IFNULL(AVG(RS_REV_RATING),0) FROM REVIEW WHERE rs_no = #{rsNo}
     </select>
     
-   
+   <insert id="insertReview">
+        INSERT INTO REVIEW (MEM_NO, RS_NO, RS_REV_RATING, REV_CONTENTS, REV_CREATE_DATE)
+        VALUES (#{memNo}, #{rsNo}, #{revContents} , #{rsRevrating}, NOW());
+    </insert>
 
 </mapper>

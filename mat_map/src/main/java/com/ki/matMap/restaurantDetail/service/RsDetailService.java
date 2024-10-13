@@ -19,4 +19,5 @@ public interface RsDetailService {
     
     double getAverageRating(int rsNo);
     
+    void insertReview(RsReviewVo review);
 }

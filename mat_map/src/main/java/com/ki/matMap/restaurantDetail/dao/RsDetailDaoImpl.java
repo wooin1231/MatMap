@@ -49,6 +49,10 @@ public class RsDetailDaoImpl implements RsDetailDao{
 		return sqlSession.selectOne(NAMESPACE +".getAverageRating", rsNo);
 	}
 	
+	 @Override
+	 public void insertReview(RsReviewVo review) {
+	        sqlSession.insert(NAMESPACE + ".insertReview", review);
+	    }
 	
 	
 }

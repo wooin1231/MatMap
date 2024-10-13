@@ -19,5 +19,5 @@ public interface RsDetailDao {
 
 	double getAverageRating(int rsNo);
 
-
+	void insertReview(RsReviewVo review);
 }

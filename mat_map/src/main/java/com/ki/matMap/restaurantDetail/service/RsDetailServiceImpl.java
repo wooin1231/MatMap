@@ -48,5 +48,10 @@ public class RsDetailServiceImpl implements RsDetailService{
 	public double getAverageRating(int rsNo) {
 		return rsDeDao.getAverageRating(rsNo);
 	}
+	
+	 @Override
+	  public void insertReview(RsReviewVo review) {
+	      rsDeDao.insertReview(review);
+	    }
 
 }

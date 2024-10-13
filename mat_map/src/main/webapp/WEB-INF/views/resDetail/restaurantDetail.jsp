@@ -1,6 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page session="false"%>
+<%@ page session="true" %>
+<c:set var="restaurant" value="${restaurant}" />
+<c:if test="${not empty restaurant}">
+    <p>Restaurant ID: ${restaurant.rsNo}</p>
+    <script>
+        console.log("Restaurant ID in JSP: ${restaurant.rsNo}");
+    </script>
+</c:if>
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
@@ -321,6 +328,29 @@
 		<jsp:include page="/WEB-INF/views/main/header.jsp"/>
 	</head>
 	
+	<script>
+	  // 구글 맵 초기화
+			let map;
+
+			  function initMap() {
+			    // 지도 옵션 설정
+			    const mapOptions = {
+			      center: { lat: parseFloat("${restaurant.rsLat}"), lng: parseFloat("${restaurant.rsLong}") }, // 좌표 설정
+			      zoom: 15, // 줌 레벨 설정
+			      scrollWheel: true
+			    };
+			
+			    // 지도를 표시할 위치
+			    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+			
+			    // 마커 생성
+			    const marker = new google.maps.Marker({
+			      position: { lat: parseFloat("${restaurant.rsLat}"), lng: parseFloat("${restaurant.rsLong}") },
+			      map: map,
+			      title: "${restaurant.rsName}", // 마커의 제목
+			    });
+			  };
+			  </script>
 	 <!-- Slick Slider 초기화 -->
     <script type="text/javascript">
         $(document).ready(function(){
@@ -392,26 +422,17 @@
 
 			<!-- Modal Container -->	
 			<div class="btn-group" role="group" aria-label="Basic mixed styles example" style="margin-top: 20px;">
-			<button type="button" class="btn btn-danger"
+			<button type="button" class="btn btn-danger" id="likeBtn"
 					style="background-color: #ff7f00; border-color: white;">좋아요</button>
+					<span id="likeIcon" style="display:none;">❤️</span>
 			<button type="button" class="btn btn-danger" id="reviewWri"
-					style="background-color: #ff7f00; border-color: white;">리뷰 작성</button>
+					style="background-color: #ff7f00; border-color: white"
+				   onclick="console.log('${pageContext.request.contextPath}/review/write?rsNo=${restaurant.rsNo}'); 
+                  location.href='${pageContext.request.contextPath}/review/write?rsNo=${restaurant.rsNo}'">리뷰 작성</button>
 			<button type="button" class="btn btn-danger" id="bookBtn"
-					style="background-color: #ff7f00; border-color: white;">예약 등록</button>
+					style="background-color: #ff7f00; border-color: white;">예약 등록 </button>
 			</div>
-		<%-- 	<div class="modal-review">
-				<div id="reviewModal" class="modal">
-				<span class="close" id="close-modal">&times;</span>
-						<%@ include file="/WEB-INF/views/restaurant/review.jsp"%>
-				</div>
-			</div> --%>
 		
-			<%-- <div class="modal-book">
-				<div id="bookmodal" class="modal">
-				<span class="close" id="close-modal2">&times;</span>
-						<%@ include file="/WEB-INF/views/restaurant/book.jsp"%>
-				</div>
-			</div> --%>
 			
 			<div class="card" style="width: 850px;">
 				<div id="infoTable">
@@ -462,7 +483,7 @@
 	
 						<tr>
 							<th scope="row">미디어</th>
-							<td colspan="8"><img src="assets/img/youtube logo.png" alt=""
+							<td colspan="8"><img src="${root}/resources/assets/img/youtube logo.png" alt=""
 								id="mediaImage" /> ${restaurant.rsYoutube}</td>
 						</tr>
 	
@@ -493,7 +514,9 @@
 				</div>
 			</div>
 		</section>
-	
+		
+		
+		
 		<!-- Review Section -->
 		<section class="container" style="max-width: 850px;">
 			<div class="fw-bolder" style="font-size: 1.8rem">미정 리뷰</div>
@@ -536,26 +559,7 @@
 	
 	
 	    
-			   // 구글 맵 초기화
-			let map;
-
-			  function initMap() {
-			    // 지도 옵션 설정
-			    const mapOptions = {
-			      center: { lat: parseFloat("${restaurant.rsLat}"), lng: parseFloat("${restaurant.rsLong}") }, // 좌표 설정
-			      zoom: 15, // 줌 레벨 설정
-			    };
-			
-			    // 지도를 표시할 위치
-			    map = new google.maps.Map(document.getElementById("map"), mapOptions);
-			
-			    // 마커 생성
-			    const marker = new google.maps.Marker({
-			      position: { lat: parseFloat("${restaurant.rsLat}"), lng: parseFloat("${restaurant.rsLong}") },
-			      map: map,
-			      title: "${restaurant.rsName}", // 마커의 제목
-			    });
-			  };
+			 
 		  
 	$(document).ready(function () {
 		$('.center').slick({
@@ -585,7 +589,16 @@
 			});
 	  });
 	
-		
+		document.getElementById("reviewWri").addEventListener("click", function() {
+        	const isLoggedIn = '<%= session.getAttribute("memNo") != null %>';
+
+        if (!isLoggedIn) {
+            alert("회원이 아닙니다. 로그인이 필요합니다.");
+            window.location.href = "/login"; // 로그인 페이지로 이동
+        } else {
+            window.location.href = "/review/write?${restaurant.rsNo}=<%= request.getParameter("rsNo") %>";
+        }
+    });
 	
 	
     

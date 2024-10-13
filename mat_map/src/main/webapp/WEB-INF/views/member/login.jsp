@@ -10,7 +10,7 @@
 	            padding: 0;
 	            background: #FFFFFF;
 	        }
-	        .container {
+	        .login-container {
 	            position: relative;
 	            width: 573px;  /* Custom width */
 	            height: 615px; /* Custom height */
@@ -75,23 +75,19 @@
 		    <div class="logo"></div> <!-- Logo at the top -->
 		
 		    <h1>로그인</h1>
-		
+			<form action="${pageContext.request.contextPath}/login" method="post">
 		    <div class="form-field">
 		        <label for="login-username">아이디 (Username)</label>
-		        <input type="text" id="login-username" name="login-username" required>
+		        <input type="text" id="memId" name="memId" required>
 		    </div>
 		    <div class="form-field">
 		        <label for="login-password">비밀번호 (Password)</label>
-		        <input type="password" id="login-password" name="login-password" required>
+		        <input type="password" id="memPwd" name="memPwd" required>
 		    </div>
-		    <div class="checkbox">
-		        <input type="checkbox" id="stay-logged-in" name="stay-logged-in">
-		        <label for="stay-logged-in">로그인 상태 유지 (Stay logged in)</label>
-		    </div>
+		    
 		    <button class="button">로그인 (Log In)</button>
-		    <div class="links">
-		        <a href="join">회원가입 하기 (Register)</a>
-		    </div>
+		    
+			</form>		    
 		</section>
         <!-- Footer -->
         <jsp:include page="/WEB-INF/views/main/footer.jsp"/>

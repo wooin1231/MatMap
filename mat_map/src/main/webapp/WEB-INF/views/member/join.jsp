@@ -56,7 +56,7 @@
 	            border-radius: 4px;
 	            margin: 0 auto; 
 	        }
-	        .button {
+	        .submit {
 	            background-color: #FF8C00;
 	            color: white;
 	            padding: 10px;
@@ -67,11 +67,12 @@
 	            font-size: 16px;
 	            margin-top: 10px;
 	        }
-	        .button:hover {
+	        .submit:hover {
 	            background-color: #e07b00;
 	        }
 	    </style>
     </head>
+    	
     <body>
         <!-- Navigator -->
 		<jsp:include page="/WEB-INF/views/main/nav.jsp"/>
@@ -80,34 +81,53 @@
 		    <div class="logo"></div> <!-- Logo at the top -->
 		
 		    <h1>회원가입</h1> <!-- Title for registration -->
+		    
+		    <form action="${pageContext.request.contextPath}/register" method="post">
 		
 		    <div class="form-field">
-		        <label for="username">아이디 (Username)</label>
-		        <input type="text" id="username" name="username" required>
+		        <label for="username">아이디 (UserId)</label>
+		        <input type="text" id="memId" name="memId" required>
 		    </div>
 		    <div class="form-field">
-		        <label for="account-name">사용자 계정명 (User Account Name)</label>
-		        <input type="text" id="account-name" name="account-name" required>
+		        <label for="account-name">사용자 이름 (User Name)</label>
+		        <input type="text" id="memName" name="memName" required>
+		    </div>
+		    <div class="form-field">
+		        <label for="account-name">사용자 활동명 (User Account Name)</label>
+		        <input type="text" id="memNick" name="memNick" required>
 		    </div>
 		    <div class="form-field">
 		        <label for="password">비밀번호 (Password)</label>
-		        <input type="password" id="password" name="password" required>
+		        <input type="password" id="memPwd" name="memPwd" required>
 		    </div>
 		    <div class="form-field">
 		        <label for="confirm-password">비밀번호 확인 (Confirm Password)</label>
 		        <input type="password" id="confirm-password" name="confirm-password" required>
+		        <small id="passwordError" style="color: red;"></small><br>
 		    </div>
 		    <div class="form-field">
 		        <label for="phone">휴대폰 번호 (Phone Number)</label>
-		        <input type="text" id="phone" name="phone" required>
+		        <input type="text" id="memPhone" name="memPhone" required>
 		    </div>
 		    <div class="form-field">
 		        <label for="email">이메일 (Email)</label>
-		        <input type="email" id="email" name="email" required>
+		        <input type="email" id="memEmail" name="memEmail" required>
 		    </div>
-		    <button class="button">가입하기 (Register)</button> 
+		    <button class="submit">가입하기 (Register)</button> 
+		   </form>
 		</section>
         <!-- Footer -->
         <jsp:include page="/WEB-INF/views/main/footer.jsp"/>
     </body>
+    <script>
+		    $(document).ready(function() {
+		            $('#memPwd', '#confirm-Password').on('keyup', function () {
+		                if ($('#memPwd').val() !== $('#confirm-Password').val()) {
+		                    $('#passwordError').text('비밀번호가 일치하지 않습니다.');
+		                } else {
+		                    $('#passwordError').text('');
+		                }
+		            });
+		        });
+		    </script>
 </html>
