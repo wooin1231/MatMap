@@ -321,29 +321,6 @@
 		<jsp:include page="/WEB-INF/views/main/header.jsp"/>
 	</head>
 	
-	<script>
-	  // 구글 맵 초기화
-			let map;
-
-			  function initMap() {
-			    // 지도 옵션 설정
-			    const mapOptions = {
-			      center: { lat: parseFloat("${restaurant.rsLat}"), lng: parseFloat("${restaurant.rsLong}") }, // 좌표 설정
-			      zoom: 15, // 줌 레벨 설정
-			      scrollWheel: true
-			    };
-			
-			    // 지도를 표시할 위치
-			    map = new google.maps.Map(document.getElementById("map"), mapOptions);
-			
-			    // 마커 생성
-			    const marker = new google.maps.Marker({
-			      position: { lat: parseFloat("${restaurant.rsLat}"), lng: parseFloat("${restaurant.rsLong}") },
-			      map: map,
-			      title: "${restaurant.rsName}", // 마커의 제목
-			    });
-			  };
-			  </script>
 	 <!-- Slick Slider 초기화 -->
     <script type="text/javascript">
         $(document).ready(function(){
@@ -485,7 +462,7 @@
 	
 						<tr>
 							<th scope="row">미디어</th>
-							<td colspan="8"><img src="${root}/resources/assets/img/youtube logo.png" alt=""
+							<td colspan="8"><img src="assets/img/youtube logo.png" alt=""
 								id="mediaImage" /> ${restaurant.rsYoutube}</td>
 						</tr>
 	
@@ -559,7 +536,26 @@
 	
 	
 	    
-			 
+			   // 구글 맵 초기화
+			let map;
+
+			  function initMap() {
+			    // 지도 옵션 설정
+			    const mapOptions = {
+			      center: { lat: parseFloat("${restaurant.rsLat}"), lng: parseFloat("${restaurant.rsLong}") }, // 좌표 설정
+			      zoom: 15, // 줌 레벨 설정
+			    };
+			
+			    // 지도를 표시할 위치
+			    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+			
+			    // 마커 생성
+			    const marker = new google.maps.Marker({
+			      position: { lat: parseFloat("${restaurant.rsLat}"), lng: parseFloat("${restaurant.rsLong}") },
+			      map: map,
+			      title: "${restaurant.rsName}", // 마커의 제목
+			    });
+			  };
 		  
 	$(document).ready(function () {
 		$('.center').slick({
