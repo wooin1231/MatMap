@@ -17,7 +17,7 @@
                 <c:choose>
                     <c:when test="${sessionScope.user != null}">
                         <!-- 로그인된 상태 -->
-                        <a class="menu-nav-bar fw-bolder" href="/mypage">마이페이지</a>
+                        <a class="menu-nav-bar fw-bolder" href="/myInfo">마이페이지</a>
                         <a class="menu-nav-bar fw-bolder" href="/logout">로그아웃</a>
                     </c:when>
                     <c:otherwise>
