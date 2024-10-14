@@ -2,12 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page session="true" %>
 <c:set var="restaurant" value="${restaurant}" />
-<c:if test="${not empty restaurant}">
-    <p>Restaurant ID: ${restaurant.rsNo}</p>
-    <script>
-        console.log("Restaurant ID in JSP: ${restaurant.rsNo}");
-    </script>
-</c:if>
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <c:set var="root" value="${pageContext.request.contextPath}" />
@@ -427,10 +421,10 @@
 					<span id="likeIcon" style="display:none;">❤️</span>
 			<button type="button" class="btn btn-danger" id="reviewWri"
 					style="background-color: #ff7f00; border-color: white"
-				   onclick="console.log('${pageContext.request.contextPath}/review/write?rsNo=${restaurant.rsNo}'); 
-                  location.href='${pageContext.request.contextPath}/review/write?rsNo=${restaurant.rsNo}'">리뷰 작성</button>
+				    onclick="window.location.href = '${pageContext.request.contextPath}/review/write?rsNo=${restaurant.rsNo}'">리뷰 작성</button>
 			<button type="button" class="btn btn-danger" id="bookBtn"
-					style="background-color: #ff7f00; border-color: white;">예약 등록 </button>
+					style="background-color: #ff7f00; border-color: white;"
+					onclick="window.location.href = '${pageContext.request.contextPath}/review/book'">예약 등록 </button>
 			</div>
 		
 			
@@ -589,16 +583,7 @@
 			});
 	  });
 	
-		document.getElementById("reviewWri").addEventListener("click", function() {
-        	const isLoggedIn = '<%= session.getAttribute("memNo") != null %>';
-
-        if (!isLoggedIn) {
-            alert("회원이 아닙니다. 로그인이 필요합니다.");
-            window.location.href = "/login"; // 로그인 페이지로 이동
-        } else {
-            window.location.href = "/review/write?${restaurant.rsNo}=<%= request.getParameter("rsNo") %>";
-        }
-    });
+		
 	
 	
     

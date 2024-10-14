@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="true" %>
+<c:set var="restaurant" value="${restaurant}" />
 <!DOCTYPE html>
 <html>
 
@@ -11,23 +13,27 @@
 </style>
 
     <head>
+    	<jsp:include page="/WEB-INF/views/main/header.jsp"/>
     </head>
     <body>
-        <!-- Navigator -->
+      <!-- Navigator -->
+		<jsp:include page="/WEB-INF/views/main/nav.jsp"/>
         <!-- Contents Page -->
+      
         <c:if test="${not empty errorMessage}">
         			<div style="color:red;">${errorMessage}</div>
     		</c:if>
-         <form action="${pageContext.request.contextPath}/review/insert" method="post">
-          <input type="hidden" name="rsNo" value="${rsNo}" />
-		<section class="review-page shadow" style="margin: 0 auto; margin-left: 20px;">
+    	<%-- 	<c:if test="${not empty restaurant}">
+			    <c:out value="${restaurant.rsNo}" />
+			    <input type="hidden" name="rsNo" value="${restaurant.rsNo}" />
+			</c:if> --%>
+        <form action="${pageContext.request.contextPath}/review/insert" method="post">
+       	
+		<section class="review-page shadow" >
 			<div class="review-page-title fw-bolder">🔔 리뷰 등록</div>
 			<br/>
-			
-			 
 			<div class="review-form-items">
 				<br/>
-				
 				<div>
 					<div class="review-contents fw-bolder">📌 내용</div>
 					<textarea name="revContent" id="revContent"  class="form-control review-contents-input" placeholder="내용을 입력하세요."></textarea>
@@ -49,5 +55,6 @@
 		</section>
 		</form>
         <!-- Footer -->
+        <jsp:include page="/WEB-INF/views/main/footer.jsp"/>
     </body>
 </html>

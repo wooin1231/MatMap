@@ -9,7 +9,7 @@ public class RsReviewVo {
 	
 	 private int revNo;
 	 private int memNo;
-	 private int rsNo;
+	 private Integer rsNo;
 	 private int rsRevRating;
 	 private String revContents;
 	 private java.sql.Timestamp revCreateDate;
