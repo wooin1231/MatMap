@@ -15,7 +15,7 @@
         }
 
         .container {
-            width: 573px;  
+            width: 573px;
             background: #FFFFFF;
             box-shadow: 0px 0.593692px 0px rgba(0, 0, 0, 0.15);
             padding-top: 40px; 
@@ -92,6 +92,7 @@
     
     <button type="button" class="btn btn-success" id="updateB" style="margin: auto;
     display: block; " onclick="location.href='/myUpdate'">수정하기</button>
+    
 </div>
 
 </body>

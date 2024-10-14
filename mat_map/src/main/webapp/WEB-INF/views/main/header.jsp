@@ -9,7 +9,7 @@
         <meta name="author" content="" />
         <title>미정(味停)</title>
         <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/resources/assets/matmap-20241014.ico" />
         <!-- Fonts -->
         <style>
         	@font-face {
@@ -37,6 +37,5 @@
         <link href="${pageContext.request.contextPath}/resources/css/ranking.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/resources/css/review.css" rel="stylesheet" />
         <link href="${pageContext.request.contextPath}/resources/css/book.css" rel="stylesheet" />
-        <link rel="icon" type="image/*" href="/resources/assets/matmap.ico" />
     </head>
 </html>

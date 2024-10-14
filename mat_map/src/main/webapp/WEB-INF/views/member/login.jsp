@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,29 +11,19 @@
 	        }
 	        .login-container {
 	            position: relative;
-	            width: 573px;  /* Custom width */
-	            height: 615px; /* Custom height */
+	            width: 573px;
+	            height: 70vh;
 	            margin: auto;
 	            background: #FFFFFF;
-	            box-shadow: 0px 0.593692px 0px rgba(0, 0, 0, 0.15);
+	            padding-top: 80px;
+	            padding-left: 20px;
+	            padding-right: 20px;
 	        }
-	        .logo {
-	            position: absolute;
-	            width: 480px;  /* Adjusted for better visibility */
-	            height: 50px; /* Adjusted for better visibility */
-	            background: url('/mnt/data/image.png') no-repeat center;
-	            background-size: contain;
-	            top: 0; /* Adjust top position for spacing */
-	            left: 50%; /* Center the logo horizontally */
-	            transform: translateX(-50%); /* Center the logo */
-	            z-index: 10; /* Make sure logo appears above other elements */
-	        }
-	        h1 {
-	            margin: 100px 0 20px 0; /* 로고와의 간격 */
+	        .title-login {
 	            font-size: 36px;
-	            font-weight: 600;
 	            color: #FF7400;
 	            text-align: center;
+	            margin-bottom: 20px;
 	        }
 	        .form-field {
 	            margin-bottom: 15px;
@@ -45,22 +34,25 @@
 	            color: #666;
 	        }
 	        .form-field input {
-	            width: calc(100% - 20px); /* Adjusted width to match custom size */
-	            padding: 10px; /* Adjusted height */
+	            width: 100%;
+	            padding: 10px;
 	            border: 1px solid #ccc;
 	            border-radius: 4px;
-	            margin: 0 auto; /* Center the input fields */
+	            box-sizing: border-box;
+	            margin: 0 auto;
 	        }
 	        .button {
+	            width: 100%;
+	            padding: 10px;
 	            background-color: #FF8C00;
 	            color: white;
-	            padding: 10px;
 	            border: none;
 	            border-radius: 5px;
 	            cursor: pointer;
-	            width: 100%;
 	            font-size: 16px;
-	            margin-top: 10px;
+	            margin-top: 40px;
+	            box-sizing: border-box;
+	            display: block;
 	        }
 	        .button:hover {
 	            background-color: #e07b00;
@@ -71,22 +63,18 @@
         <!-- Navigator -->
 		<jsp:include page="/WEB-INF/views/main/nav.jsp"/>
         <!-- Contents Page -->
-        <section class="login-container">
-		    <div class="logo"></div> <!-- Logo at the top -->
-		
-		    <h1>로그인</h1>
+        <section class="login-container" style="margin-bottom: 3%;">
+		    <div class="title-login fw-bolder">로그인</div>
 			<form action="${pageContext.request.contextPath}/login" method="post">
-		    <div class="form-field">
-		        <label for="login-username">아이디 (Username)</label>
-		        <input type="text" id="memId" name="memId" required>
-		    </div>
-		    <div class="form-field">
-		        <label for="login-password">비밀번호 (Password)</label>
-		        <input type="password" id="memPwd" name="memPwd" required>
-		    </div>
-		    
-		    <button class="button">로그인 (Log In)</button>
-		    
+			    <div class="form-field">
+			        <label for="login-username">아이디</label>
+			        <input type="text" id="memId" name="memId" required>
+			    </div>
+			    <div class="form-field">
+			        <label for="login-password">비밀번호</label>
+			        <input type="password" id="memPwd" name="memPwd" required>
+			    </div>
+			    <button type="submit" class="button fw-bolder">로그인</button>
 			</form>		    
 		</section>
         <!-- Footer -->
